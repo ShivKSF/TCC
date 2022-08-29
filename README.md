@@ -4,9 +4,11 @@ Esse repositório foi criado com o intuito de armazenar o código de projeto de 
 
 # Ferramentas utilizadas
 
-* 
-* 
-* 
+* PHP8 PDO
+* MySQL
+* Javascript
+* AJAX
+* Bootstrap
 
 ## Passo a passo para utilizar o projeto
 
@@ -79,7 +81,7 @@ Senha: `123`
 
 ## Developer Front-End
 
-<a href="https://www.linkedin.com/in/andreisgomes/overlay/photo/">
+<a href="https://www.linkedin.com/in/andreisgomes/">
  <img style="border-radius: 50%;" src="https://media-exp1.licdn.com/dms/image/C4E03AQHoRSMjSzU6OA/profile-displayphoto-shrink_800_800/0/1609195556804?e=1667433600&v=beta&t=DenfZdCxsLsO2MpUzGE35IJ60DQbQ11SyO_nwXygLo4" width="100px;" alt=""/>
  <br />
  <sub><b>Andrei de Souza Gomes</b></sub></a>

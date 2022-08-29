@@ -9,5 +9,6 @@ $nome_adm = 'Kaique Sousa Farias';
 $servidor = 'localhost';
 $usuario = 'root';
 $senha = '';
+//$senha = '240190';
 $banco = 'financeiro';
 ?>

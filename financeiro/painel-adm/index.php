@@ -15,6 +15,16 @@ $nome_usuario = $res[0]['nome'];
 $email_usuario = $res[0]['email'];
 $senha_usuario = $res[0]['senha'];
 $nivel_usuario = $res[0]['nivel'];
+
+$pagina = @$_GET['pag'];
+
+//MENU DO PAINEL
+$menu1 = 'home';
+$menu2 = 'pessoas';
+$menu3 = 'usuarios';
+$menu4 = 'niveis';
+
+
 ?>
 
 <!DOCTYPE html>
@@ -34,29 +44,26 @@ $nivel_usuario = $res[0]['nivel'];
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-lg bg-warning">
         <div class="container-fluid">
             <!--ICONE NO MENU-->
-            <a class="navbar-brand" href="#"><img src="../img/logo.png" width="50px"></a>
+            <a class="navbar-brand" href="index.php?pag=<?php echo $menu1 ?>"><img src="../img/logo.png" width="50px"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="index.php?pag=<?php echo $menu1 ?>">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Cadastros
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" href="index.php?pag=<?php echo $menu2 ?>">Pessoas</a></li>
+                            <li><a class="dropdown-item" href="index.php?pag=<?php echo $menu3 ?>">Usuários</a></li>
+                            <li><a class="dropdown-item" href="#index.php?pag=<?php echo $menu4 ?>">Níveis de Usuários</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -85,6 +92,12 @@ $nivel_usuario = $res[0]['nivel'];
             </div>
         </div>
     </nav>
+
+    <div class="container-fluid">
+        <?php
+            if($_SESSION)
+        ?>
+    </div>
 </body>
 
 </html>
@@ -160,12 +173,9 @@ $nivel_usuario = $res[0]['nivel'];
                 //MOSTRA MENSAGEM
                 $('#mensagem-perfil').text(mensagem)
             },
-
             cache: false,
             contentType: false,
             processData: false,
-
         });
-
     });
 </script>

@@ -16,13 +16,18 @@ $email_usuario = $res[0]['email'];
 $senha_usuario = $res[0]['senha'];
 $nivel_usuario = $res[0]['nivel'];
 
-$pagina = @$_GET['pag'];
-
 //MENU DO PAINEL
 $menu1 = 'home';
 $menu2 = 'pessoas';
 $menu3 = 'usuarios';
 $menu4 = 'niveis';
+
+if(@$_GET['pag'] == "") {
+    $pag = $menu1;
+}
+else{
+    $pag = $_GET['pag'];
+}
 
 
 ?>
@@ -63,7 +68,7 @@ $menu4 = 'niveis';
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="index.php?pag=<?php echo $menu2 ?>">Pessoas</a></li>
                             <li><a class="dropdown-item" href="index.php?pag=<?php echo $menu3 ?>">Usuários</a></li>
-                            <li><a class="dropdown-item" href="#index.php?pag=<?php echo $menu4 ?>">Níveis de Usuários</a></li>
+                            <li><a class="dropdown-item" href="index.php?pag=<?php echo $menu4 ?>">Níveis de Usuários</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -93,9 +98,9 @@ $menu4 = 'niveis';
         </div>
     </nav>
 
-    <div class="container-fluid">
+    <div class="container-fluid mb-4">
         <?php
-            if($_SESSION)
+            require_once($pag. '.php');
         ?>
     </div>
 </body>

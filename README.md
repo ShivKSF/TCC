@@ -57,10 +57,14 @@ Senha: `123`
 - [X] Criar validação de email duplicado
 - [X] Alterar dados de Usuários
 - [X] Impedir acesso sem login
-- [ ] Criar Menu
+- [X] Criar Menu
+- [ ] Alterar aparência
 - [ ] Criar Cadastros
 - [ ] Criar Dashboard
 - [ ] Criar Contas: `à Pagar` e `à Receber`
+- [ ] Não recarregar página de Login ao digitar dados incorretos
+- [ ] Organizar arquivos
+
 
 ## Histórico de lançamentos
 

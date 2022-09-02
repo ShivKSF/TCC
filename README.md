@@ -36,9 +36,16 @@ Esse repositório foi criado com o intuito de armazenar o código de projeto de 
 | nome  | VARCHAR | 50              |         |     |
 | email | VARCHAR | 50              |         |     |
 | senha | VARCHAR | 50              |         |     |
-| nivel | VARCHAR | 50              |         |     |
+| nivel | VARCHAR | 25              |         |     |
 
 * Obs.: Ao marcar a caixa de A_I (Auto Increment), o índice automaticamente é colocado como PRIMARY (Chave Primária).
+
+- Crie uma outra tabela da seguinte forma:
+
+| Nome  | Tipo    | Tamanho/Valores | Índice  | A_I |
+|-------|---------|-----------------|---------|-----|
+| id    | INT     |                 | PRIMARY | X   |
+| nivel | VARCHAR | 25              |         |     |
 
 7. Clique em `Guarda` para salvar as informações.
 8. Vá em seu navegador e cole o seguinte caminho: `http://localhost/financeiro/`
@@ -58,8 +65,10 @@ Senha: `123`
 - [X] Alterar dados de Usuários
 - [X] Impedir acesso sem login
 - [X] Criar Menu
+- [ ] Cadastro de Níveis de Usuários
+- [ ] Cadastro de Usuários
+- [ ] Cadastro de Pessoas
 - [ ] Alterar aparência
-- [ ] Criar Cadastros
 - [ ] Criar Dashboard
 - [ ] Criar Contas: `à Pagar` e `à Receber`
 - [ ] Não recarregar página de Login ao digitar dados incorretos

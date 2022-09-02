@@ -44,6 +44,11 @@ else{
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <!--API AJAX-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--DATATABLE-->
+    <link rel="stylesheet" type="text/css" href="../DataTables/datatables.min.css"/>
+    <script type="text/javascript" src="../DataTables/datatables.min.js"></script>
+    <!--ESTILOS-->
+    <link rel="stylesheet" type="text/css" href="../css/estilos.css"/>
     <!--NOME DO SISTEMA SALVO EM config.php-->
     <title><?php echo $nome_sistema ?></title>
 </head>
@@ -98,7 +103,7 @@ else{
         </div>
     </nav>
 
-    <div class="container-fluid mb-4">
+    <div class="container-fluid mb-4 mx-4">
         <?php
             require_once($pag. '.php');
         ?>

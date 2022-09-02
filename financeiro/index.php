@@ -13,12 +13,12 @@ $res2 = $query2->fetchAll(PDO::FETCH_ASSOC);
 $total_reg2 = @count($res2);
 
 
-if($total_reg == 0){
-  $pdo->query("INSERT INTO usuarios SET nome = '$nome_adm', email = '$email_adm', senha = '$senha_adm', nivel = '$nivel_adm' ");
+if ($total_reg == 0) {
+    $pdo->query("INSERT INTO usuarios SET nome = '$nome_adm', email = '$email_adm', senha = '$senha_adm', nivel = '$nivel_adm' ");
 }
 
-if($total_reg2 == 0){
-  $pdo->query("INSERT INTO niveis SET nivel = '$nivel_adm'");
+if ($total_reg2 == 0) {
+    $pdo->query("INSERT INTO niveis SET nivel = '$nivel_adm'");
 }
 
 ?>

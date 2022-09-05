@@ -15,9 +15,15 @@ if($total_reg > 0 AND $id_reg != $id ){ // TRATAMENTO PARA RETORNAR MENSAGEM SOM
     exit();
 }
 //ATUALIZA A TABELA DE USUARIOS ONDE O CAMPO NOME RECEBE OS PARAMETROS ONDE/SOMENTE O ID SENDO IGUAL AO ID
-$query = $pdo->prepare("INSERT niveis SET nivel = :nivel ");
+if($id == ""){//VERIFICA SE O ID E IGUAL A "", SE FOR INSERE
+    $query = $pdo->prepare("INSERT INTO niveis SET nivel = :nivel ");
+}else{//SE NAO, EDITA
+    $query = $pdo->prepare("UPDATE niveis SET nivel = :nivel WHERE id = '$id'");
+}
+
+
 $query->bindValue(":nivel", "$nivel");
 $query->execute();
 
-echo 'Salvo com Sucesso!!!'
-?> 
+echo 'Salvo com Sucesso'
+?>

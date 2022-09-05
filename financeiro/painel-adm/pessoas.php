@@ -2,5 +2,5 @@
 require_once("../conexao.php");
 require_once("verificar.php");
 $pagina = 'pessoas';
-
+echo "pessoas";
 ?>

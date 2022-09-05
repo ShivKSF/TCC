@@ -12,7 +12,7 @@ $res = $query->fetchAll(PDO::FETCH_ASSOC);
 $total_reg = @count($res); //CONTA A QUANTIDADE DE EMAILS ENCONTRADOS
 $id_usu = $res[0]['id'];
 if($total_reg > 0 AND $id_usu != $id ){ // TRATAMENTO PARA RETORNAR MENSAGEM SOMENTE PARA USUARIOS[ID] DIFERETES NAO UTILIZAREM O MESMO EMAIL
-    echo 'Esse endereço de email já existe em nossa base de dados! ' .$res[0]['nome']. ' está o utilizando no momento.'; // ENVIA MENSAGEM IMPEDINDO SALVAR INFORMACOES DUPLICADAS E INFORMA QUEM ESTA UTILIZANDO ESSE EMAIL
+    echo 'Esse endereço de email já existe em nossa base de dados! ' .$res[0]['nome']. ' está o utilizando no momento, escolha outro email!!'; // ENVIA MENSAGEM IMPEDINDO SALVAR INFORMACOES DUPLICADAS E INFORMA QUEM ESTA UTILIZANDO ESSE EMAIL
     exit();
 }
 //ATUALIZA A TABELA DE USUARIOS ONDE O CAMPO NOME RECEBE OS PARAMETROS ONDE/SOMENTE O ID SENDO IGUAL AO ID
@@ -22,5 +22,5 @@ $query->bindValue(":email", "$email");
 $query->bindValue(":senha", "$senha");
 $query->execute();
 
-echo 'Salvo com Sucesso!!!'
+echo "Salvo com Sucesso"
 ?>

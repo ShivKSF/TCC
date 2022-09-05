@@ -21,11 +21,11 @@ $menu1 = 'home';
 $menu2 = 'pessoas';
 $menu3 = 'usuarios';
 $menu4 = 'niveis';
+$menu5 = 'bancos';
 
-if(@$_GET['pag'] == "") {
+if (@$_GET['pag'] == "") {
     $pag = $menu1;
-}
-else{
+} else {
     $pag = $_GET['pag'];
 }
 
@@ -45,10 +45,10 @@ else{
     <!--API AJAX-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!--DATATABLE-->
-    <link rel="stylesheet" type="text/css" href="../DataTables/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../DataTables/datatables.min.css" />
     <script type="text/javascript" src="../DataTables/datatables.min.js"></script>
     <!--ESTILOS-->
-    <link rel="stylesheet" type="text/css" href="../css/estilos.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/estilos.css" />
     <!--NOME DO SISTEMA SALVO EM config.php-->
     <title><?php echo $nome_sistema ?></title>
 </head>
@@ -57,7 +57,7 @@ else{
     <nav class="navbar navbar-expand-lg bg-warning">
         <div class="container-fluid">
             <!--ICONE NO MENU-->
-            <a class="navbar-brand" href="index.php?pag=<?php echo $menu1 ?>"><img src="../img/logo.png" width="50px"></a>
+            <a class="navbar-brand" href="index.php?pag=<?php echo $menu1 ?>"><img src="../img/hazaq.png" width="50px"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -72,6 +72,7 @@ else{
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="index.php?pag=<?php echo $menu2 ?>">Pessoas</a></li>
+                            <li><a class="dropdown-item" href="index.php?pag=<?php echo $menu5 ?>">Bancos</a></li>
                             <li><a class="dropdown-item" href="index.php?pag=<?php echo $menu3 ?>">Usuários</a></li>
                             <li><a class="dropdown-item" href="index.php?pag=<?php echo $menu4 ?>">Níveis de Usuários</a></li>
                         </ul>
@@ -87,7 +88,7 @@ else{
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <!--NOME DO USUARIO LOGADO-->
-                                <?php echo $nome_usuario ?>
+                                <?php echo @$nome_usuario ?>
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalPefil">Editar</a></li>
@@ -105,7 +106,7 @@ else{
 
     <div class="container-fluid mb-4 mx-4">
         <?php
-            require_once($pag. '.php');
+        require_once($pag . '.php');
         ?>
     </div>
 </body>
@@ -171,7 +172,7 @@ else{
                 //EXIBE MENSAGEM EM '#mensagem-perfil' E REMOVE CLASSE DE COR
                 $('#mensagem-perfil').removeClass()
                 //VERIFICA SE A MENSAGEM SALVO COM SUCESSO E RETORNADA
-                if (mensagem.trim() == "Salvo com Sucesso!!!") {
+                if (mensagem.trim() == "Salvo com Sucesso") {
                     //FECHA AUTOMATICO A TELA COM O BOTAO DE FECHAR, EM CASO DE SUCESSO
                     $('#btn-fechar-perfil').click();
                     window.location = "index.php";

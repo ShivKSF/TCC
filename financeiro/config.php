@@ -10,7 +10,7 @@ $nivel_adm = 'Administrador';
 //DADOS PARA O BANCO DE DADOS
 $servidor = 'localhost';
 $usuario = 'root';
-//$senha = '';
-$senha = '240190';
+$senha = '';
+//$senha = '240190';
 $banco = 'financeiro';
 ?>

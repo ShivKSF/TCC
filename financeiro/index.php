@@ -3,12 +3,12 @@
 require_once("conexao.php");
 
 //CRIAR O USUÁRIO ADMINISTRADOR CASO ELE NÃO EXISTA
-$query = $pdo->query("SELECT * from usuarios where nivel = '$nivel_adm' ");
+$query = $pdo->query("SELECT * FROM usuarios WHERE nivel = '$nivel_adm' ");
 $res = $query->fetchAll(PDO::FETCH_ASSOC);
 $total_reg = @count($res);
 
 //CRIAR O NÍVEL ADMINISTRADOR CASO ELE NÃO EXISTA
-$query2 = $pdo->query("SELECT * from niveis where nivel = '$nivel_adm' ");
+$query2 = $pdo->query("SELECT * FROM niveis WHERE nivel = '$nivel_adm' ");
 $res2 = $query2->fetchAll(PDO::FETCH_ASSOC);
 $total_reg2 = @count($res2);
 
@@ -45,7 +45,7 @@ if ($total_reg2 == 0) {
         <div class="row">
             <div class="">
                 <div class="account-wall">
-                    <img class="profile-img" src="img/logo.png" alt="">
+                    <img class="profile-img" src="img/hazaq.png" alt="">
                     <form class="form-signin" method="post" action="autenticar.php">
                         <input type="email" name="email" class="form-control mb-2" placeholder="Email" required autofocus>
                         <input type="password" name="senha" class="form-control mb-3" placeholder="Senha" required>

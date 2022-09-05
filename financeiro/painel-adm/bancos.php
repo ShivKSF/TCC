@@ -1,14 +1,14 @@
 <?php
 require_once("../conexao.php");
 require_once("verificar.php");
-$pagina = 'usuarios';
+$pagina = 'bancos';
 require_once($pagina . "/campos.php");
 
 ?>
 
 <!--BOTAO-->
 <div class="col-md-12 my-3">
-    <a href="#" onclick="inserir()" type="button" class="btn btn-outline-warning">Novo Usuário</a>
+    <a href="#" onclick="inserir()" type="button" class="btn btn-outline-warning">Novo Banco</a>
 </div>
 
 <!--TABELAS-->
@@ -30,34 +30,6 @@ require_once($pagina . "/campos.php");
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label"><?php echo $campo1 ?></label>
                         <input type="text" class="form-control" name="<?php echo $campo1 ?>" placeholder="<?php echo $campo1 ?>" id="<?php echo $campo1 ?>" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label"><?php echo $campo2 ?></label>
-                        <input type="email" class="form-control" name="<?php echo $campo2 ?>" placeholder="<?php echo $campo2 ?>" id="<?php echo $campo2 ?>" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label"><?php echo $campo3 ?></label>
-                        <input type="text" class="form-control" name="<?php echo $campo3 ?>" placeholder="<?php echo $campo3 ?>" id="<?php echo $campo3 ?>" required>
-                    </div>
-
-                    <!--SELECT-->
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Nível</label>
-                        <select class="form-select" aria-label="Default select example" name="<?php echo $campo4 ?>" id="<?php echo $campo4 ?>">
-                            <?php
-                            $query = $pdo->query("SELECT * FROM niveis WHERE inativo = 0 ORDER BY nivel ASC");
-                            $res = $query->fetchAll(PDO::FETCH_ASSOC);
-                            for ($i = 0; $i < @count($res); $i++) {
-                                foreach ($res[$i] as $key => $value) {
-                                }
-                                $id_item = $res[$i]['id'];
-                                $nivel_item = $res[$i]['nivel'];
-                            ?>
-                                <option value="<?php echo $nivel_item ?>"><?php echo $nivel_item ?></option>
-
-                            <?php } ?>
-                        </select>
                     </div>
 
                     <small>

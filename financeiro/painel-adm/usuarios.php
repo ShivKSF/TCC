@@ -8,7 +8,7 @@ require_once($pagina . "/campos.php");
 
 <!--BOTAO-->
 <div class="col-md-12 my-3">
-    <a href="#" onclick="inserir()" type="button" class="btn btn-outline-warning">Novo Usuário</a>
+    <a href="#" onclick="inserir()" type="button" class="btn btn-outline-warning">Cadastrar Usuários</a>
 </div>
 
 <!--TABELAS-->

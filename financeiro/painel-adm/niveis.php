@@ -7,7 +7,7 @@ $pagina = 'niveis';
 
 <!--BOTAO-->
 <div class="col-md-12 my-3">
-    <a href="#" onclick="inserir()" type="button" class="btn btn-outline-warning">Novo Nível</a>
+    <a href="#" onclick="inserir()" type="button" class="btn btn-outline-warning">Cadastrar Níveis</a>
 </div>
 
 <!--TABELAS-->

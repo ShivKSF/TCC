@@ -1,5 +1,6 @@
 <?php
 require_once("../../conexao.php");
+require_once("campos.php");
 
 echo <<<HTML
 <table id="example" class="table table-striped table-light table-hover my-4">
@@ -12,7 +13,7 @@ echo <<<HTML
 <tbody>
 HTML;
 
-$query = $pdo->query("SELECT * FROM niveis WHERE inativo = 0 ORDER BY id ASC ");
+$query = $pdo->query("SELECT * FROM $pagina WHERE inativo = 0 ORDER BY id ASC ");
 $res = $query->fetchAll(PDO::FETCH_ASSOC);
 for ($i = 0; $i < @count($res); $i++) {
     foreach ($res[$i] as $key => $value) {

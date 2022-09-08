@@ -16,9 +16,18 @@ require_once($pagina . "/campos.php");
     <!--TABELA SERA LISTADA AQUI DENTRO-->
 </div>
 
+<style>
+    .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+        color: white;
+        background-color: #ffc107;
+    }
+    .nav-pills button{
+    color:black;
+    }
+</style>
 <!-- MODAL PARA ABRIR UMA JANELA/TELA -->
 <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel"><span id="tituloModal">Inserir Registro</span></h5>
@@ -28,7 +37,7 @@ require_once($pagina . "/campos.php");
                 <div class="modal-body">
 
                 <!--MODAL TAB/NAV-->
-                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <ul class="nav nav-pills yellow mb-3" id="pills-tab" role="tablist">
 
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="pills-dadosPessoais-tab" data-bs-toggle="pill" data-bs-target="#pills-dadosPessoais" type="button" role="tab" aria-controls="pills-dadosPessoais" aria-selected="true">Dados Pessoais</button>
@@ -66,39 +75,6 @@ require_once($pagina . "/campos.php");
 
                     </div>
                     <!--FIM MODAL TAB/NAV-->
-
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label"><?php echo $campo1 ?></label>
-                        <input type="text" class="form-control" name="<?php echo $campo1 ?>" placeholder="<?php echo $campo1 ?>" id="<?php echo $campo1 ?>" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label"><?php echo $campo2 ?></label>
-                        <input type="email" class="form-control" name="<?php echo $campo2 ?>" placeholder="<?php echo $campo2 ?>" id="<?php echo $campo2 ?>" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label"><?php echo $campo3 ?></label>
-                        <input type="text" class="form-control" name="<?php echo $campo3 ?>" placeholder="<?php echo $campo3 ?>" id="<?php echo $campo3 ?>" required>
-                    </div>
-
-                    <!--SELECT-->
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Nível</label>
-                        <select class="form-select" aria-label="Default select example" name="<?php echo $campo4 ?>" id="<?php echo $campo4 ?>">
-                            <?php
-                            $query = $pdo->query("SELECT * FROM niveis WHERE inativo = 0 ORDER BY nivel ASC");
-                            $res = $query->fetchAll(PDO::FETCH_ASSOC);
-                            for ($i = 0; $i < @count($res); $i++) {
-                                foreach ($res[$i] as $key => $value) {
-                                }
-                                $id_item = $res[$i]['id'];
-                                $nivel_item = $res[$i]['nivel'];
-                            ?>
-                                <option value="<?php echo $nivel_item ?>"><?php echo $nivel_item ?></option>
-
-                            <?php } ?>
-                        </select>
-                    </div>
 
                     <small>
                         <div id="mensagem" align="center"></div>

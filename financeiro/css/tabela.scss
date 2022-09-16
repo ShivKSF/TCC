@@ -1,0 +1,43 @@
+@import 'colors';
+
+.tabela {
+    background-color: $white;
+    border: 1px solid $gray;
+    padding: 40px;
+
+    /* -- Caixa do "Mostrar Registros" -- */
+    select { 
+        cursor: pointer;
+    }
+    select:focus {
+        border: none;
+        box-shadow: 0 0 10px 1px $yellowalpha;
+        outline: none;
+    }
+    /* -- Linha dos títulos da tabela -- */
+    tr {
+        background-color: $gray;
+    }
+
+    
+    /* -- Campo de busca -- */
+    input {
+        border-radius: 10px; 
+        border: 1px solid $gray;
+    }
+    input:focus {
+            border: none;
+            box-shadow: 0 0 10px 1px $yellowalpha;
+            outline: none;
+    }
+
+    /* -- Caixa "Mostrar Registros" e "Buscar" -- */
+    .dataTables_length, .example_filter {
+        margin-bottom: 30px;
+    }
+    /* -- "Anterior" e "Próximo" -- */
+    //.dataTables_paginate {
+    //   
+    //}
+    
+}

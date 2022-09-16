@@ -1,0 +1,318 @@
+@charset "UTF-8";
+/* --------------- RESET -------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+}
+
+/* ------------ CONFIG DASHBOARD --------- */
+#dashboard {
+  width: 70%;
+  margin-top: 100px;
+  margin-left: 390px;
+}
+
+/*------------ ESTILOS DO MENU   ---------------*/
+#container {
+  width: 100%;
+  display: flex;
+}
+
+#menu-lateral {
+  position: fixed;
+  background-color: #D49F00;
+  height: 100vh;
+  width: 280px;
+  left: 0;
+  top: 0;
+}
+#menu-lateral img {
+  width: 150px;
+  margin: 55px 0 40px 50px;
+}
+#menu-lateral .itens-menu { /* Itens do menu */ }
+#menu-lateral .itens-menu li {
+  display: block;
+  list-style: none;
+}
+#menu-lateral .itens-menu li a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+  width: 250px;
+  margin-left: 10px;
+  padding: 7px 0;
+}
+#menu-lateral .itens-menu li a .items {
+  font-size: 23px;
+}
+#menu-lateral .itens-menu li a .material-symbols-outlined {
+  font-size: 30px;
+  margin-left: 20px;
+}
+#menu-lateral .itens-menu li a:hover {
+  background-color: rgba(99, 74, 0, 0.384);
+  border-radius: 8px;
+  transition: 0.6ms ease;
+}
+#menu-lateral .itens-menu li a:hover span:nth-child(3) {
+  rotate: 90deg;
+}
+#menu-lateral .itens-menu li ul li {
+  display: none;
+  width: 250px;
+  margin-left: 70px;
+}
+#menu-lateral .itens-menu li ul li a {
+  font-size: 18px;
+  width: 180px;
+}
+#menu-lateral .itens-menu li:hover ul li {
+  display: block;
+  color: blue;
+}
+
+/*-------------------------------------------------*/
+.menu-superior {
+  position: fixed;
+  background-color: #D49F00;
+  width: 100%;
+  height: 6vh;
+  float: right;
+}
+
+.navbar-nav {
+  display: flex;
+  float: right;
+}
+.navbar-nav a {
+  margin-top: 12px;
+  margin-right: 20px;
+  color: #000;
+  text-decoration: none;
+}
+
+.painel {
+  display: flex;
+  flex-direction: column;
+}
+
+/*--------- ATALHOS RÁPIDOS --------*/
+.atalhoRapido {
+  display: flex;
+  height: 180px;
+  margin-bottom: 50px;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 5px 5px 20px 1px rgba(0, 0, 0, 0.1);
+}
+.atalhoRapido h2 {
+  margin-bottom: 25px;
+}
+.atalhoRapido h2::first-letter {
+  font-size: 40px;
+}
+
+.card {
+  display: flex;
+  width: 80%;
+  justify-content: space-around;
+}
+.card a {
+  display: flex;
+  width: 240px;
+  height: 60px;
+  border-radius: 5px;
+  background-color: #D49F00;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  color: #000;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+}
+.card a:hover {
+  background-color: #967000;
+  box-shadow: 0 0 10px 1px rgba(255, 191, 0, 0.925);
+}
+.card a:focus {
+  background-color: #967000;
+}
+
+.card .material-symbols-outlined {
+  font-size: 30px;
+}
+
+span:nth-child(2) {
+  margin-left: 15px;
+}
+
+/*-----------------------------------*/
+.agendao {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1200px;
+  height: 500px;
+}
+
+.agenda {
+  margin: 0 8em;
+}
+
+.notes {
+  width: 350px;
+  background-color: rgba(255, 190, 190, 0.788);
+  margin: 0 8em;
+}
+
+.titleAgenda {
+  margin: 0 32em;
+}
+
+.titleAgenda h2::first-letter {
+  font-size: 40px;
+}
+
+/* ------------- GENERAL ------------ */
+/*
+body {
+	background: #f9f9f9;
+	color: #0e171c;
+  display: grid;
+	font: 300 100%/1.5em 'Lato', sans-serif;
+	margin: 0;
+  min-height: 100vh;
+  place-items: center;
+}
+
+a {
+	text-decoration: none;
+}
+
+h2 {
+	font-size: 2em;
+	line-height: 1.25em;
+	margin: .25em 0;
+}
+
+h3 {
+	font-size: 1.5em;
+	line-height: 1em;
+	margin: .33em 0;
+}
+*/
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*
+.container {
+	width: 510px;
+}
+*/
+/* ---------- CALENDAR ----------- */
+.calendar {
+  text-align: center;
+}
+
+.calendar header {
+  position: relative;
+}
+
+.calendar h3 {
+  text-transform: uppercase;
+}
+
+.calendar thead {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.calendar tbody {
+  color: #555;
+}
+
+.calendar tbody td:hover {
+  border: 2px solid green;
+}
+
+.calendar td {
+  border: 2px solid transparent;
+  border-radius: 50%;
+  display: inline-block;
+  height: 3em;
+  line-height: 3em;
+  text-align: center;
+  width: 3em;
+}
+
+.calendar .prev-month,
+.calendar .next-month {
+  color: #DDD;
+}
+
+.calendar .prev-month:hover,
+.calendar .next-month:hover {
+  border: 2px solid purple;
+}
+
+.current-day {
+  background: blue;
+  color: #FFF;
+}
+
+.event {
+  cursor: pointer;
+  position: relative;
+}
+
+.event:after {
+  background: cornflowerblue;
+  border-radius: 50%;
+  bottom: 0.15em;
+  display: block;
+  content: "";
+  height: 0.5em;
+  left: 50%;
+  margin: -0.25em 0 0 -0.25em;
+  position: absolute;
+  width: 0.5em;
+}
+
+.event.current-day:after {
+  background: #FFF;
+}
+
+.btn-prev,
+.btn-next {
+  border: 2px solid #DDD;
+  border-radius: 50%;
+  color: #FFF;
+  height: 2em;
+  font-size: 0.75em;
+  line-height: 2em;
+  margin: -1em;
+  position: absolute;
+  top: 50%;
+  width: 2em;
+}
+
+.btn-prev:hover,
+.btn-next:hover {
+  background: #967000;
+  color: #f9f9f9;
+}
+
+.btn-prev {
+  left: 6em;
+}
+
+.btn-next {
+  right: 6em;
+}/*# sourceMappingURL=styleHome.css.map */

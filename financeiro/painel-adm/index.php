@@ -16,6 +16,8 @@ $email_usuario = $res[0]['email'];
 $senha_usuario = $res[0]['senha'];
 $nivel_usuario = $res[0]['nivel'];
 
+$pagina = @$_GET['pag'];
+
 //MENU DO PAINEL
 $menu1 = 'home';
 $menu2 = 'pessoas';
@@ -33,122 +35,110 @@ if (@$_GET['pag'] == "") {
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-BR">
-<!--NAME É UTILIZADO PARA VARIAVEL / ID UTILIZADO SCRIPT(php/js)-->
-
+<html lang="Pt-Br">
 <head>
-    <link rel="shortcut icon" href="../img/icone.ico" type="image/x-icon">
-    <!--BOOTSTRAP-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!--API AJAX-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!--DATATABLE-->
     <link rel="stylesheet" type="text/css" href="../DataTables/datatables.min.css" />
+    <script src="../js/scripts.js"></script>
     <script type="text/javascript" src="../DataTables/datatables.min.js"></script>
-    <!--ESTILOS-->
-    <link rel="stylesheet" type="text/css" href="../css/estilos.css" />
-    <!--NOME DO SISTEMA SALVO EM config.php-->
+    <link rel="stylesheet" href="../css/styleHome.css"/>
+    <link rel="stylesheet" href="../css/stylePessoas.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"/>
+    <link rel="shortcut icon" href="img/icone.ico" type="image/x-icon">
     <title><?php echo $nome_sistema ?></title>
 </head>
-
 <body>
-    <nav class="navbar navbar-expand-lg bg-warning">
-        <div class="container-fluid">
-            <!--ICONE NO MENU-->
-            <a class="navbar-brand" href="index.php?pag=<?php echo $menu1 ?>"><img src="../img/hazaq.png" width="50px"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php?pag=<?php echo $menu1 ?>">Home</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Cadastros
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="index.php?pag=<?php echo $menu2 ?>">Pessoas</a></li>
-                            <li><a class="dropdown-item" href="index.php?pag=<?php echo $menu5 ?>">Bancos</a></li>
-                            <li><a class="dropdown-item" href="index.php?pag=<?php echo $menu3 ?>">Usuários</a></li>
-                            <li><a class="dropdown-item" href="index.php?pag=<?php echo $menu4 ?>">Níveis de Usuários</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled">Disabled</a>
-                    </li>
-                </ul>
-                <div class="d-flex mr-4" role="search">
-                    <!--ICONE DO USUARIO-->
-                    <img class="img-profile rounded-circle" src="../img/usuario.png" width="40px" height="40px">
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <!--NOME DO USUARIO LOGADO-->
-                                <?php echo @$nome_usuario ?>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalPefil">Editar</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="../logout.php">Sair</a></li>
-                            </ul>
-                        </li>
+    <div id="container">
+        <!--------  MENU LATERAL ---------->
+        <nav id="menu-lateral">
+            <!---LOGO MENU--->
+            <a class="navbar-brand" href="index.php?pag=<?php echo $menu1 ?>">
+                <img src="../img/logoMenu.png" alt="">
+            </a>
+
+            <!--- ITENS MENU--->
+            <ul class="itens-menu">
+                <li>
+                    <a href="index.php?pag=<?php echo $menu1 ?>">
+                        <span class="material-symbols-outlined">&#xE88A;</span>
+                        <span class="items">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="material-symbols-outlined">&#xE145;</span>
+                        <span class="items">Cadastros</span>
+                        <span class="material-symbols-outlined">&#xE409;</span>
+                    </a>
+                    <ul class="dropmenu">
+                            <li><a href="index.php?pag=<?php echo $menu2 ?>">Pessoas</a></li>
+                            <li><a href="index.php?pag=<?php echo $menu5 ?>">Bancos</a></li>
+                            <li><a href="index.php?pag=<?php echo $menu3 ?>">Usuários</a></li>
+                            <li><a href="index.php?pag=<?php echo $menu4 ?>">Níveis de Usuários</a></li>
                     </ul>
-                </div>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="material-symbols-outlined">&#xE645;</span>
+                        <span class="items">Construindo</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="material-symbols-outlined">&#xE645;</span>
+                        <span class="items">Construindo</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="material-symbols-outlined">&#xE645;</span>
+                        <span class="items">Construindo</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../logout.php">
+                        <span class="material-symbols-outlined">&#xE9BA;</span>
+                        <span class="items">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        
+        <!---ICONE DO USUARIO-->
+        <nav class="menu-superior" role="search">
+            
+            <div class="navbar-nav">
+            <img class="img-profile rounded-circle" src="../img/usuario.png" width="40px" height="40px">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <!---NOME DO USUARIO LOGADO--->
+                        <?php echo @$nome_usuario ?>
+                    </a>
+                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalPefil">Editar
+                    </a>
+                    <a class="dropdown-item" href="../logout.php">Sair</a>
+                    </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-    <div class="container-fluid mb-4 mx-4">
-        <?php
-        require_once($pag . '.php');
+
+        <div>
+            <?php
+            require_once($pag . '.php');
         ?>
-    </div>
-</body>
+        </div>
 
+    </div>
+
+</body>
 </html>
 
-<!-- MODAL PARA ABRIR UMA JANELA/TELA -->
-<div class="modal fade" id="modalPefil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Editar Dados</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <!-- BODY -->
-            <form id="form-perfil" method="post">
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Nome</label>
-                        <input type="text" class="form-control" name="nome-usuario" placeholder="Nome" value="<?php echo $nome_usuario ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Email</label>
-                        <input type="email" class="form-control" name="email-usuario" placeholder="Email" value="<?php echo $email_usuario ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Senha</label>
-                        <input type="text" class="form-control" name="senha-usuario" placeholder="Senha" value="<?php echo $senha_usuario ?>">
-                    </div>
-                    <small>
-                        <div id="mensagem-perfil" align="center"></div>
-                    </small>
-                    <input type="hidden" class="form-control" name="id-usuario" value="<?php echo $id_usuario ?>">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btn-fechar-perfil">Fechar</button>
-                    <button type="submit" class="btn btn-primary">Salvar alterações</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 <!-- AJAX PARA INSERIR OU EDITAR DADOS -->
 <script type="text/javascript">

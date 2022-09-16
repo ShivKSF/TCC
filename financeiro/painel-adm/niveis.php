@@ -5,64 +5,32 @@ $pagina = 'niveis';
 
 ?>
 
-<!--BOTAO-->
-<div class="col-md-12 my-3">
-    <a href="#" onclick="inserir()" type="button" class="btn btn-outline-warning">Cadastrar Níveis</a>
-</div>
 
-<!--TABELAS-->
-<div class="tabela bg-light" id="listar">
-    <!--TABELA SERA LISTADA AQUI DENTRO-->
-</div>
+<div id="dashboard">
 
-<!-- MODAL PARA ABRIR UMA JANELA/TELA -->
-<div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"><span id="tituloModal">Inserir Registro</span></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form id="form" method="post">
-                <div class="modal-body">
+    <!--BOTAO "NOVO BANCO"-->
+    <div class="botaoCadastro">
+        <div class="col-md-12 my-3">
+            <button onclick="botaoCadastro()" class="btn-cadastrar">Cadastrar Nível</button>
+        </div>
 
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Nível</label>
-                        <input type="text" class="form-control" name="nivel" placeholder="Nível do Usuário" id="nivel" required>
-                    </div>
-                    <small>
-                        <div id="mensagem" align="center"></div>
-                    </small>
-                    <input type="hidden" class="form-control" name="id" id="id">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btn-fechar">Fechar</button>
-                    <button type="submit" class="btn btn-primary">Salvar</button>
-                </div>
-            </form>
+        <!--TABELAS-->
+        <div class="tabela bg-light" id="listar">
+            <!--TABELA SERA LISTADA AQUI DENTRO-->
         </div>
     </div>
-</div>
 
-<!--MODAL EXCLUIR-->
-<div class="modal fade" id="modalExcluir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"><span id="tituloModal">Excluir Registro</span></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form id="form-excluir" method="post">
-                <div class="modal-body">
-                    O registro <strong><span id="nome-excluido"></strong></span> será excluído, tem certeza que irá excluir?
-                    <hr><small>
-                        <div id="mensagem-excluir" align="center"></div>
-                    </small>
-                    <input type="hidden" class="form-control" name="id-excluir" id="id-excluir">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btn-fechar-excluir">Fechar</button>
-                    <button type="submit" class="btn btn-danger">Excluir</button>
+    <!-- MODAL CADASTRAR PESSOAS -->
+    <div class="form-cadastro">
+        <div class="formu">
+            <h1>Cadastrar Nível</h1>
+            <hr>
+            <form id="form" method="post">
+                <input type="text" placeholder="Insira o nível do usuário" required></input>
+                
+                <div class="buttons">
+                    <button type="submit">Salvar</button>
+                    <button type="button">Cancelar</button>
                 </div>
             </form>
         </div>

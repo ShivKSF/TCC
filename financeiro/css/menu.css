@@ -1,0 +1,84 @@
+/*------------ ESTILOS DO MENU   ---------------*/
+#container {
+  width: 100%;
+  display: flex;
+}
+
+#menu-lateral {
+  position: fixed;
+  background-color: #D49F00;
+  height: 100vh;
+  width: 280px;
+  left: 0;
+  top: 0;
+}
+#menu-lateral img {
+  width: 150px;
+  margin: 55px 0 40px 50px;
+}
+#menu-lateral .itens-menu { /* Itens do menu */ }
+#menu-lateral .itens-menu li {
+  display: block;
+  list-style: none;
+}
+#menu-lateral .itens-menu li a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+  width: 250px;
+  margin-left: 10px;
+  padding: 7px 0;
+}
+#menu-lateral .itens-menu li a .items {
+  font-size: 23px;
+}
+#menu-lateral .itens-menu li a .material-symbols-outlined {
+  font-size: 30px;
+  margin-left: 20px;
+}
+#menu-lateral .itens-menu li a:hover {
+  background-color: rgba(99, 74, 0, 0.384);
+  border-radius: 8px;
+  transition: 0.6ms ease;
+}
+#menu-lateral .itens-menu li a:hover span:nth-child(3) {
+  rotate: 90deg;
+}
+#menu-lateral .itens-menu li ul li {
+  display: none;
+  width: 250px;
+  margin-left: 70px;
+}
+#menu-lateral .itens-menu li ul li a {
+  font-size: 18px;
+  width: 180px;
+}
+
+/*-------------------------------------------------*/
+.menu-superior {
+  position: fixed;
+  background-color: #D49F00;
+  width: 100%;
+  height: 6vh;
+  float: right;
+}
+
+.navbar-nav {
+  display: flex;
+  float: right;
+}
+.navbar-nav img {
+  margin-right: 9px;
+  margin-top: 5px;
+}
+.navbar-nav a {
+  margin-top: 12px;
+  margin-right: 20px;
+  color: #000;
+  text-decoration: none;
+}
+.navbar-nav .nav-link {
+  font-weight: bold;
+}/*# sourceMappingURL=menu.css.map */

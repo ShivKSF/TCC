@@ -1,0 +1,253 @@
+@charset "UTF-8";
+/* --------------- RESET -------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+}
+
+/* ------------ CONFIG DASHBOARD --------- */
+#dashboard {
+  width: 70%;
+  margin-top: 100px;
+  margin-left: 390px;
+}
+
+/*------------ ESTILOS DO MENU   ---------------*/
+#container {
+  width: 100%;
+  display: flex;
+}
+
+#menu-lateral {
+  position: fixed;
+  background-color: #D49F00;
+  height: 100vh;
+  width: 280px;
+  left: 0;
+  top: 0;
+}
+#menu-lateral img {
+  width: 150px;
+  margin: 55px 0 40px 50px;
+}
+#menu-lateral .itens-menu { /* Itens do menu */ }
+#menu-lateral .itens-menu li {
+  display: block;
+  list-style: none;
+}
+#menu-lateral .itens-menu li a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+  width: 250px;
+  margin-left: 10px;
+  padding: 7px 0;
+}
+#menu-lateral .itens-menu li a .items {
+  font-size: 23px;
+}
+#menu-lateral .itens-menu li a .material-symbols-outlined {
+  font-size: 30px;
+  margin-left: 20px;
+}
+#menu-lateral .itens-menu li a:hover {
+  background-color: rgba(99, 74, 0, 0.384);
+  border-radius: 8px;
+  transition: 0.6ms ease;
+}
+#menu-lateral .itens-menu li a:hover span:nth-child(3) {
+  rotate: 90deg;
+}
+#menu-lateral .itens-menu li ul li {
+  display: none;
+  width: 250px;
+  margin-left: 70px;
+}
+#menu-lateral .itens-menu li ul li a {
+  font-size: 18px;
+  width: 180px;
+}
+
+/*-------------------------------------------------*/
+.menu-superior {
+  position: fixed;
+  background-color: #D49F00;
+  width: 100%;
+  height: 6vh;
+  float: right;
+}
+
+.navbar-nav {
+  display: flex;
+  float: right;
+}
+.navbar-nav img {
+  margin-right: 9px;
+  margin-top: 5px;
+}
+.navbar-nav a {
+  margin-top: 12px;
+  margin-right: 20px;
+  color: #000;
+  text-decoration: none;
+}
+.navbar-nav a:hover {
+  border: none;
+  color: rgba(255, 191, 0, 0.925);
+}
+.navbar-nav .nav-link {
+  font-weight: bold;
+}
+
+.tabela {
+  background-color: #FFF;
+  border: 1px solid #DDD;
+  padding: 40px;
+  /* -- Caixa do "Mostrar Registros" -- */
+  /* -- Linha dos títulos da tabela -- */
+  /* -- Campo de busca -- */
+  /* -- Caixa "Mostrar Registros" e "Buscar" -- */
+  /* -- "Anterior" e "Próximo" -- */
+}
+.tabela select {
+  cursor: pointer;
+}
+.tabela select:focus {
+  border: none;
+  box-shadow: 0 0 10px 1px rgba(255, 191, 0, 0.925);
+  outline: none;
+}
+.tabela tr {
+  background-color: #DDD;
+}
+.tabela input {
+  border-radius: 10px;
+  border: 1px solid #DDD;
+}
+.tabela input:focus {
+  border: none;
+  box-shadow: 0 0 10px 1px rgba(255, 191, 0, 0.925);
+  outline: none;
+}
+.tabela .dataTables_length, .tabela .example_filter {
+  margin-bottom: 30px;
+}
+
+button {
+  width: 150px;
+  height: 40px;
+  background-color: #D49F00;
+  border-radius: 10px;
+  border: 1px solid #D49F00;
+  margin: 10px;
+  margin-bottom: 70px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #967000;
+  box-shadow: 0 0 10px 1px rgba(255, 191, 0, 0.925);
+}
+
+button:focus {
+  background-color: #967000;
+}
+
+.active {
+  position: absolute;
+  background-color: #FFF;
+  width: 500px;
+  height: 400px;
+  left: 600px;
+  top: 100px;
+  border: 1px solid #DDD;
+  border-radius: 10px;
+  visibility: visible;
+}
+
+.form-cadastro {
+  visibility: hidden;
+}
+.form-cadastro h1 {
+  margin: 30px 0 20px 90px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.form-cadastro hr {
+  position: absolute;
+  left: 85px;
+  top: 65px;
+  width: 320px;
+  border: 1px solid #DDD;
+}
+.form-cadastro form {
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form-cadastro form input {
+  width: 320px;
+  height: 35px;
+  padding: 3px 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border: 1px solid #DDD;
+  font-size: 18px;
+}
+.form-cadastro form input::-moz-placeholder {
+  letter-spacing: 1px;
+  padding-left: 20px;
+  font-size: 14px;
+}
+.form-cadastro form input:-ms-input-placeholder {
+  letter-spacing: 1px;
+  padding-left: 20px;
+  font-size: 14px;
+}
+.form-cadastro form input::placeholder {
+  letter-spacing: 1px;
+  padding-left: 20px;
+  font-size: 14px;
+}
+.form-cadastro form input:focus {
+  border: none;
+  box-shadow: 0 0 10px 1px rgba(255, 191, 0, 0.925);
+  outline: none;
+}
+.form-cadastro form .buttons { /* DIV botões do formulário */
+  display: flex;
+  margin-top: 10px;
+}
+.form-cadastro form select {
+  width: 320px;
+  height: 35px;
+  padding: 3px 25px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border: 1px solid #DDD;
+  color: #555;
+  letter-spacing: 1px;
+}
+.form-cadastro form select option:hover {
+  background-color: aqua;
+}
+.form-cadastro form select:focus {
+  border: none;
+  box-shadow: 0 0 10px 1px rgba(255, 191, 0, 0.925);
+  outline: none;
+}
+.form-cadastro form select:disabled {
+  color: red;
+}
+
+.blur {
+  filter: blur(10px);
+}
+
+/* --------------------------- *//*# sourceMappingURL=stylePessoas.css.map */

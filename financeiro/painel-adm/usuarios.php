@@ -2,64 +2,73 @@
 require_once("../conexao.php");
 require_once("verificar.php");
 $pagina = 'usuarios';
+
 require_once($pagina . "/campos.php");
 
 ?>
 
+<div class="col-md-12 my-3">
 
-<div id="dashboard">
+	<div class="tabela bg-light" id="listar">
 
-    <!--BOTAO "CADASTRAR USUÁRIO"-->
-    <div class="botaoCadastro">
-        <div class="col-md-12 my-3">
-            <button onclick="botaoCadastro()" class="btn-cadastrar">Cadastrar Usuário</button>
-        </div>
+	</div>
+</div>
 
-        <!--TABELAS-->
-        <div class="tabela bg-light" id="listar">
-            <!--TABELA SERA LISTADA AQUI DENTRO-->
-        </div>
-    </div>
 
-    <!-- MODAL CADASTRAR USUARIOS -->
-    <div class="form-cadastro">
-        <div class="formu">
-            <h1>Cadastrar Usuário</h1>
-            <hr>
-            <form id="form" method="post">
-                <input type="text" placeholder="Nome" required></input>
-                <input type="email" placeholder="example@example.com.br" required></input>
-                <input type="password"placeholder="Insira sua senha" required></input>
-                <!------- SELECIONE O NIVEL---------->
-                <select name="<?php echo $campo4 ?>" id="<?php echo $campo4 ?>" placeholder="Selecione o nível">
+<!-- Modal -->
+<div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel"><span id="tituloModal">Inserir Registro</span></h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<form id="form" method="post">
+				<div class="modal-body">
 
-                            <option value="" disabled selected>Selecione o nível</option>
+					<div class="mb-3">
+						<label for="exampleFormControlInput1" class="form-label"><?php echo $campo1 ?></label>
+						<input type="text" class="form-control" name="<?php echo $campo1 ?>" placeholder="<?php echo $campo1 ?>" id="<?php echo $campo1 ?>" required>
+					</div>
 
-                            <?php
-                            $query = $pdo->query("SELECT * FROM niveis WHERE inativo = 0 ORDER BY nivel ASC");
-                            $res = $query->fetchAll(PDO::FETCH_ASSOC);
-                            for ($i = 0; $i < @count($res); $i++) {
-                                foreach ($res[$i] as $key => $value) {
-                                }
-                                $id_item = $res[$i]['id'];
-                                $nivel_item = $res[$i]['nivel'];
-                            ?>
-                                <option value="<?php echo $nivel_item ?>"><?php echo $nivel_item ?></option>
+					<div class="mb-3">
+						<label for="exampleFormControlInput1" class="form-label"><?php echo $campo2 ?></label>
+						<input type="email" class="form-control" name="<?php echo $campo2 ?>" placeholder="<?php echo $campo2 ?>" id="<?php echo $campo2 ?>" required>
+					</div>
 
-                            <?php } ?>
-                </select>
-                    <!-- ---------------------------->
-                <div class="buttons">
-                    <button type="submit">Salvar</button>
-                    <button type="button">Cancelar</button>
-                </div>
-            </form>
-        </div>
-    </div>
+					<div class="mb-3">
+						<label for="exampleFormControlInput1" class="form-label"><?php echo $campo3 ?></label>
+						<input type="password" class="form-control" name="<?php echo $campo3 ?>" placeholder="<?php echo $campo3 ?>" id="<?php echo $campo3 ?>" required>
+					</div>
+
+
+					<div class="mb-3">
+						<label for="exampleFormControlInput1" class="form-label"><?php echo $campo4 ?></label>
+						<select class="form-select" aria-label="Default select example" name="<?php echo $campo4 ?>" id="<?php echo $campo4 ?>">
+							<option value="Administrador">Administrador</option>
+							<option value="Auxiliar">Auxiliar</option>
+						</select>
+					</div>
+
+					<small>
+						<div id="mensagem" align="center"></div>
+					</small>
+
+					<input type="hidden" class="form-control" name="id" id="id">
+
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btn-fechar">Fechar</button>
+					<button type="submit" class="btn btn-primary">Salvar</button>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
 
 
 <script type="text/javascript">
-    var pag = "<?= $pagina ?>"
+	var pag = "<?= $pagina ?>"
 </script>
 <script src="../js/ajax.js"></script>

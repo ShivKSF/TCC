@@ -3,23 +3,15 @@
 require_once("conexao.php");
 
 //CRIA USUARIO ADM CASO ELE NAO EXISTA
-$query = $pdo->query("SELECT * FROM usuarios WHERE nivel = 'Administrador' ");
+$query = $pdo->query("SELECT * FROM usuarios WHERE perfil = 'Administrador' ");
 $res = $query->fetchAll(PDO::FETCH_ASSOC);
 $total_reg = @count($res);
 
-//CRIAR O NÍVEL ADMINISTRADOR CASO ELE NÃO EXISTA
-$query2 = $pdo->query("SELECT * FROM niveis WHERE nivel = '$nivel_adm' ");
-$res2 = $query2->fetchAll(PDO::FETCH_ASSOC);
-$total_reg2 = @count($res2);
-
 
 if ($total_reg == 0) {
-    $pdo->query("INSERT INTO usuarios SET nome = '$nome_adm', email = '$email_adm', senha = '$senha_adm', nivel = '$nivel_adm' ");
+    $pdo->query("INSERT INTO usuarios SET nome = '$nome_admin', email = '$email_admin', senha = '$senha_admin', perfil = '$perfil_admin' ");
 }
 
-if ($total_reg2 == 0) {
-    $pdo->query("INSERT INTO niveis SET nivel = '$nivel_adm'");
-}
 
 ?>
 

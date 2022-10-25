@@ -1,7 +1,6 @@
-<?php
+<?php 
 @session_start();
-//VERIFICA SE USUARIO ADM ESTA CONECTADO, SE NAO ESTIVER ELE VOLTA PARA A TELA DE LOGIN
-if(@$_SESSION['nivel_usuario'] != 'Administrador'){
-    echo "<script>window.location='../index.php'</script>";
-}
-?>
+if(@$_SESSION['perfil_usuario'] != 'Administrador' AND @$_SESSION['perfil_usuario'] != 'Auxiliar'){
+		echo "<script>window.location='../index.php'</script>";
+	}
+ ?>

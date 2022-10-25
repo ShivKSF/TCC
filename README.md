@@ -1,4 +1,6 @@
+<p align="center">
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
+</p>
 # TCC
 
 Esse repositório foi criado com o intuito de armazenar o código de projeto de TCC.
@@ -9,7 +11,10 @@ Esse repositório foi criado com o intuito de armazenar o código de projeto de 
 * MySQL
 * Javascript
 * AJAX
+* jQuery
 * Bootstrap
+* DataTables
+* Sass
 
 ## Passo a passo para utilizar o projeto
 
@@ -30,10 +35,9 @@ Esse repositório foi criado com o intuito de armazenar o código de projeto de 
 3. Crie o banco de dados.
 4. Crie a tabela com o nome `usuarios` e número de colunas `5`.
 5. Criar banco de dados.
-6. Importar o banco de Dados.
-7. Para salvar clique em `Guarda` para salvar as informações.
-8. Vá em seu navegador e cole o seguinte caminho: `http://localhost/financeiro/`
-9. Quando o sistema abrir, automaticamente será registrado no banco de dados um email e senha, por padrão foi inserido o seguinte:
+6. Importar o banco de dados que está dentro da pasta `banco`.
+7. Vá em seu navegador e cole o seguinte caminho: `http://localhost/financeiro/`
+8. Quando o sistema abrir, automaticamente será registrado no banco de dados um email e senha, por padrão foi inserido o seguinte:
 Email: `kaique.sousa@unigranrio.br`
 Senha: `1`
 

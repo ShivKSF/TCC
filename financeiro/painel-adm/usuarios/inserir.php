@@ -1,8 +1,7 @@
 <?php 
 require_once("../../conexao.php");
-require_once("campos.php"); //VARIAVEIS ARMAZENADAS
+require_once("campos.php");
 
-//VARIAVEIS RECEBENDO SEUS CAMPOS
 $id = @$_POST['id'];
 $cp1 = $_POST[$campo1];
 $cp2 = $_POST[$campo2];
@@ -15,14 +14,14 @@ $res = $query->fetchAll(PDO::FETCH_ASSOC);
 $total_reg = @count($res);
 $id_reg = @$res[0]['id'];
 if($total_reg > 0 and $id_reg != $id){
-	echo 'Este email já está cadastrado!!';
+	echo 'Este registro já está cadastrado!!';
 	exit();
 }
 
 if($id == ""){
-	$query = $pdo->prepare("INSERT INTO $pagina SET nome = :campo1, email = :campo2, senha = :campo3, nivel = :campo4");
+	$query = $pdo->prepare("INSERT INTO $pagina SET nome = :campo1, email = :campo2, senha = :campo3, perfil = :campo4");
 }else{
-	$query = $pdo->prepare("UPDATE $pagina SET nome = :campo1, email = :campo2, senha = :campo3, nivel = :campo4 WHERE id = '$id'");
+	$query = $pdo->prepare("UPDATE $pagina SET nome = :campo1, email = :campo2, senha = :campo3, perfil = :campo4 WHERE id = '$id'");
 }
 
 $query->bindValue(":campo1", "$cp1");

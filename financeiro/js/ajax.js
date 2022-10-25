@@ -1,73 +1,70 @@
 $(document).ready(function() {
     listar();
+
 } );
-//EXCLUIR REGISTRO
-function excluir(id, nome){
-    $('#id-excluir').val(id);
-    $('#nome-excluido').text(nome);
-    var myModal = new bootstrap.Modal(document.getElementById('modalExcluir'), { });
-    myModal.show();
-    $('#mensagem-excluir').text('');
-}
-//INSERIR REGISTRO
+
+
+
 function inserir(){
     $('#mensagem').text('');
     $('#tituloModal').text('Inserir Registro');
-    var myModal = new bootstrap.Modal(document.getElementById('modalForm'), { });
+    var myModal = new bootstrap.Modal(document.getElementById('modalForm'), {
+        backdrop: 'static',
+    });
     myModal.show();
     limparCampos();
 }
 
-//AJAX PARA INSERIR OU EDITAR DADOS
-//NOME FORMULARIO PARA SUBMISSAO DE DADOS
+function excluir(id, nome){
+    $('#id-excluir').val(id);
+    $('#nome-excluido').text(nome);
+    var myModal = new bootstrap.Modal(document.getElementById('modalExcluir'), {       });
+    myModal.show();
+    $('#mensagem-excluir').text('');
+}
+
 $("#form").submit(function () {
-    //NAO ATUALIZA PAGINA
-    event.preventDefault(); 
-    //RECEBE DADOS DO FORMULARIO
-    var formData = new FormData(this);
+	event.preventDefault();
+	var formData = new FormData(this);
 
-    $.ajax({
-        //COLETA ARQUIVO, EXECUTA
-        url: pag + "/inserir.php",
-        //PASSA O FORMULARIO NO METODO POST
-        type: 'POST',
-        //DADOS COLETADOS
-        data: formData,
+	$.ajax({
+		url: pag + "/inserir.php",
+		type: 'POST',
+		data: formData,
 
-        // SE FUNCIONAR RETORNA MENSAGEM
-        success: function (mensagem) {
-            //LIMPA O TEXTO
+		success: function (mensagem) {
             $('#mensagem').text('');
-            //EXIBE MENSAGEM EM '#mensagem' E REMOVE CLASSE DE COR
             $('#mensagem').removeClass()
-            //VERIFICA SE A MENSAGEM SALVO COM SUCESSO E RETORNADA
             if (mensagem.trim() == "Salvo com Sucesso") {
-                //FECHA AUTOMATICO A TELA COM O BOTAO DE FECHAR, EM CASO DE SUCESSO
-                $('#btn-fechar').click();
-                listar();
-            }
-            //SE NAO, MOSTRA UM TEXTO VERMELHA
-            else {
-                $('#mensagem').addClass('text-danger')
-                //MOSTRA MENSAGEM
-                $('#mensagem').text(mensagem)
-            }
-        },
-        cache: false,
-        contentType: false,
-        processData: false,
-    });
+                    $('#btn-fechar').click();
+                    listar();
+                } else {
+
+                	$('#mensagem').addClass('text-danger')
+                    $('#mensagem').text(mensagem)
+                }
+
+
+            },
+
+            cache: false,
+            contentType: false,
+            processData: false,
+            
+        });
+
 });
 
 
-function listar() {
+
+function listar(){
     $.ajax({
         url: pag + "/listar.php",
         method: 'POST',
         data: $('#form').serialize(),
         dataType: "html",
 
-        success: function (result) {
+        success:function(result){
             $("#listar").html(result);
         }
     });
@@ -76,39 +73,163 @@ function listar() {
 $("#form-excluir").submit(function () {
     event.preventDefault();
     var formData = new FormData(this);
-
+    
     $.ajax({
-        //COLETA ARQUIVO, EXECUTA
         url: pag + "/excluir.php",
-        //PASSA O FORMULARIO NO METODO POST
         type: 'POST',
-        //DADOS COLETADOS
         data: formData,
 
-        // SE FUNCIONAR RETORNA MENSAGEM
         success: function (mensagem) {
-            //LIMPA O TEXTO
             $('#mensagem-excluir').text('');
-            //EXIBE MENSAGEM EM '#mensagem' E REMOVE CLASSE DE COR
             $('#mensagem-excluir').removeClass()
-            //VERIFICA SE A MENSAGEM EXCLUIDO COM SUCESSO E RETORNADA
             if (mensagem.trim() == "Excluído com Sucesso") {
-                    $('#btn-fechar-excluir').click();
-                    listar();
-                }
-                //SE NAO, MOSTRA UM TEXTO VERMELHA
-                else {
-                    $('#mensagem-excluir').addClass('text-danger')
-                    //MOSTRA MENSAGEM
-                    $('#mensagem-excluir').text(mensagem)
-                }
-            },
-            cache: false,
-            contentType: false,
-            processData: false,
-        });
+                $('#btn-fechar-excluir').click();
+                listar();
+                limparCampos();
+            } else {
+
+                $('#mensagem-excluir').addClass('text-danger')
+                $('#mensagem-excluir').text(mensagem)
+            }
+
+
+        },
+
+        cache: false,
+        contentType: false,
+        processData: false,
+
+    });
+
+});
+
+function mudarStatus(id, ativar){
+    
+    $.ajax({
+        url: pag + "/mudar-status.php",
+        method: 'POST',
+        data: {id, ativar},
+        dataType: "text",
+
+        success: function (mensagem) {
+            if (mensagem.trim() == "Alterado com Sucesso") {
+                listar();
+            }               
+        },
+
+    });
+}
+
+
+
+function carregarImg() {
+    var target = document.getElementById('target');
+    var file = document.querySelector("input[type=file]").files[0];
+    var arquivo = file['name'];
+    resultado = arquivo.split(".", 2);
+        if(resultado[1] === 'pdf'){
+            $('#target').attr('src', "../img/pdf.png");
+            return;
+        }
+
+        var reader = new FileReader();
+
+        reader.onloadend = function () {
+            target.src = reader.result;
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+
+        } else {
+            target.src = "";
+        }
+    }
+
+
+
+
+
+function parcelar(id, descricao, valor){
+    $('#id-parcelar').val(id);
+    $('#descricao-parcelar').text(descricao);
+    $('#valor-parcelar').val(valor);
+    $('#qtd-parcelar').val('');
+
+    
+    var myModal = new bootstrap.Modal(document.getElementById('modalParcelar'), {       });
+    myModal.show();
+    $('#mensagem-parcelar').text('');
+}
+
+
+
+
+$("#form-parcelar").submit(function () {
+    event.preventDefault();
+    var formData = new FormData(this);
+    
+    $.ajax({
+        url: pag + "/parcelar.php",
+        type: 'POST',
+        data: formData,
+
+        success: function (mensagem) {
+            $('#mensagem-parcelar').text('');
+            $('#mensagem-parcelar').removeClass()
+            if (mensagem.trim() == "Parcelado com Sucesso") {
+                $('#btn-fechar-parcelar').click();
+                listar();
+                limparCampos();
+            } else {
+
+                $('#mensagem-parcelar').addClass('text-danger')
+                $('#mensagem-parcelar').text(mensagem)
+            }
+
+
+        },
+
+        cache: false,
+        contentType: false,
+        processData: false,
+
+    });
+
 });
 
 
 
 
+$("#form-baixar").submit(function () {
+    event.preventDefault();
+    var formData = new FormData(this);
+    
+    $.ajax({
+        url: pag + "/baixar.php",
+        type: 'POST',
+        data: formData,
+
+        success: function (mensagem) {
+            $('#mensagem-baixar').text('');
+            $('#mensagem-baixar').removeClass()
+            if (mensagem.trim() == "Baixado com Sucesso") {
+                $('#btn-fechar-baixar').click();
+                listar();
+                limparCampos();
+            } else {
+
+                $('#mensagem-baixar').addClass('text-danger')
+                $('#mensagem-baixar').text(mensagem)
+            }
+
+
+        },
+
+        cache: false,
+        contentType: false,
+        processData: false,
+
+    });
+
+});

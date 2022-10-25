@@ -17,19 +17,23 @@ $query->execute();
 $res = $query->fetchAll(PDO::FETCH_ASSOC);
 $total_reg = @count($res);
 
-if ($total_reg > 0) {
-    $nivel = $res[0]['nivel'];
+if($total_reg > 0){
+	$perfil = $res[0]['perfil'];
+	$ativo = $res[0]['ativo'];
 
-    //VARIAVEIS DE SESSÃO
-    $_SESSION['id_usuario'] = $res[0]['id'];
-    $_SESSION['nome_usuario'] = $res[0]['nome'];
-    $_SESSION['nivel_usuario'] = $res[0]['nivel'];
-
-    //VERIFICADOR DE LOGIN
-    if ($nivel == 'Administrador') {
-        echo "<script>window.location='painel-adm'</script>";
-    }
-} else {
-    echo "<script>window.alert('Dados Incorretos!')</script>";
-    echo "<script>window.location='index.php'</script>";
+	//VARIAVEIS DE SESSÃO
+	$_SESSION['perfil_usuario'] = $res[0]['perfil'];
+	$_SESSION['id_usuario'] = $res[0]['id'];
+	$_SESSION['nome_usuario'] = $res[0]['nome'];
+	$_SESSION['ativo_usuario'] = $res[0]['ativo'];
+	
+	//VERIFICADOR DE LOGIN
+	if($perfil == 'Administrador' && $ativo == 'S' || $perfil == 'Auxiliar' && $ativo == 'S'){
+		echo "<script>window.location='painel-adm'</script>";
+	} 
+	else{
+		echo "<script>window.alert('Acesso não Autorizado!')</script>";
+		echo "<script>window.location='index.php'</script>";
+	}
 }
+ ?>

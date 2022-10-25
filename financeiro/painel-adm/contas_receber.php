@@ -88,21 +88,24 @@ if ($frequencia_automatica != 'Não') {
 	<div class="col-md-9">
 
 		<div style="float:left; margin-right:35px">
-			<a href="#" onclick="inserir()" type="button" class="btn btn-dark btn-sm">Cadastrar Conta a Receber</a>
+			<a href="#" onclick="inserir()" type="button" class="btn btn-dark btn-sm">Cadastrar Conta à Receber</a>
 		</div>
-
-		<div style="float:left; margin-right:10px"><span><small><i title="Data de Vencimento Inicial" class="bi bi-calendar-date"></i></small></span></div>
+		<div style="float:left; margin-right:10px">
+			<p class="mx-4">Data Inicial:</p>
+		</div>
 		<div style="float:left; margin-right:20px">
 			<input type="date" class="form-control form-control-sm" name="data-inicial" id="data-inicial" value="<?php echo date('Y-m-d') ?>" required>
-		</div>
 
-		<div style="float:left; margin-right:10px"><span><small><i title="Data de Vencimento Final" class="bi bi-calendar-date"></i></small></span></div>
-		<div style="float:left; margin-right:40px">
+		</div>
+		<div style="float:left; margin-right:10px">
+			<p class="mx-4">Data Final:</p>
+		</div>
+		<div style="float:left; margin-right:20px">
 			<input type="date" class="form-control form-control-sm" name="data-final" id="data-final" value="<?php echo date('Y-m-d') ?>" required>
 		</div>
 
 
-		<div style="float:left; margin-right:10px"><span><small><i title="Filtrar por Status" class="bi bi-search"></i></small></span></div>
+		<!-- <div style="float:left; margin-right:10px"><span><small><i title="Filtrar por Status" class="bi bi-search"></i></small></span></div>
 		<div style="float:left; margin-right:10px">
 			<select class="form-select form-select-sm" aria-label="Default select example" name="status-busca" id="status-busca">
 				<option value="Pendente">Pendentes / Pagas</option>
@@ -110,7 +113,7 @@ if ($frequencia_automatica != 'Não') {
 				<option value="Paga">Pagas</option>
 
 			</select>
-		</div>
+		</div> -->
 
 		<small class="mx-4">
 			<a title="Contas à Pagar Vencidas" class="text-muted" href="#" onclick="listarContasVencidas('Vencidas')"><span>Vencidas</span></a> /
@@ -151,7 +154,7 @@ if ($frequencia_automatica != 'Não') {
 							<div class="mb-3">
 								<label for="exampleFormControlInput1" class="form-label">Aluno</label>
 								<select class="form-select sel2" aria-label="Default select example" name="<?php echo $campo2 ?>" id="id-cliente" style="width:100%;">
-									<option value="">Sem Aluno</option>
+									<option value="0">Sem Aluno</option>
 									<?php
 									$query = $pdo->query("SELECT * FROM pessoas WHERE aluno = 1 order by nome asc");
 									$res = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -190,7 +193,7 @@ if ($frequencia_automatica != 'Não') {
 							<div class="mb-3">
 								<label for="exampleFormControlInput1" class="form-label">Patrocinador</label>
 								<select class="form-select sel2" aria-label="Default select example" name="<?php echo $campo4 ?>" id="id-cliente" style="width:100%;">
-									<option value="">Sem Patrocinador</option>
+									<option value="0">Sem Patrocinador</option>
 									<?php
 									$query = $pdo->query("SELECT * FROM pessoas WHERE patrocinador = 1 order by nome asc");
 									$res = $query->fetchAll(PDO::FETCH_ASSOC);

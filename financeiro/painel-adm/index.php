@@ -21,7 +21,6 @@ $menu6 = 'contas_receber';
 $menu7 = 'contas_pagar';
 $menu8 = 'despesas';
 $menu9 = 'cat_despesas';
-$menu10 = 'formas_pgtos';
 
 
 
@@ -98,7 +97,6 @@ if (@$_GET['pag'] == "") {
 							<li><a class="dropdown-item" href="index.php?pag=<?php echo $menu5 ?>">Planos de Pagamento</a></li>
 							<li><a class="dropdown-item" href="index.php?pag=<?php echo $menu9 ?>">Categoria de Despesas</a></li>
 							<li><a class="dropdown-item" href="index.php?pag=<?php echo $menu8 ?>">Tipos de Despesas</a></li>
-							<li><a class="dropdown-item" href="index.php?pag=<?php echo $menu10 ?>">Formas de Pagamento</a></li>
 						</ul>
 					</li>
 

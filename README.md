@@ -29,43 +29,13 @@ Esse repositório foi criado com o intuito de armazenar o código de projeto de 
 2. Ao lado haverá você precisará colocar `utf8_general_ci`.
 3. Crie o banco de dados.
 4. Crie a tabela com o nome `usuarios` e número de colunas `5`.
-5. Criar banco de dados:
-* Obs.: Ao marcar a caixa de A_I (Auto Increment), o índice automaticamente é colocado como PRIMARY (Chave Primária).
-
-- usuarios
-
-| Nome  | Tipo    | Tamanho/Valores | Índice  | A_I |
-|-------|---------|-----------------|---------|-----|
-| id    | INT     |                 | PRIMARY | X   |
-| nome  | VARCHAR | 50              |         |     |
-| email | VARCHAR | 50              |         |     |
-| senha | VARCHAR | 50              |         |     |
-| nivel | VARCHAR | 25              |         |     |
-| inativo | BOOLEAN |                 |         |     |
-
-- niveis
-
-| Nome  | Tipo    | Tamanho/Valores | Índice  | A_I |
-|-------|---------|-----------------|---------|-----|
-| id    | INT     |                 | PRIMARY | X   |
-| nivel | VARCHAR | 25              |         |     |
-| inativo | BOOLEAN |                 |         |     |
-
-- bancos
-
-| Nome  | Tipo    | Tamanho/Valores | Índice  | A_I |
-|-------|---------|-----------------|---------|-----|
-| id    | INT     |                 | PRIMARY | X   |
-| nome  | VARCHAR | 50              |         |     |
-| inativo | BOOLEAN |                 |         |     |
-
-
+5. Criar banco de dados.
+6. Importar o banco de Dados.
 7. Para salvar clique em `Guarda` para salvar as informações.
 8. Vá em seu navegador e cole o seguinte caminho: `http://localhost/financeiro/`
 9. Quando o sistema abrir, automaticamente será registrado no banco de dados um email e senha, por padrão foi inserido o seguinte:
 Email: `kaique.sousa@unigranrio.br`
 Senha: `1`
-10. Seja Feliz! <3
 
 # Lista de Desenvolvimento
 

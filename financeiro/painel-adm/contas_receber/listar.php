@@ -33,199 +33,226 @@ if ($alterou_data == 'Sim') {
 
 
 
-echo <<<HTML
-<table id="{$pagina}" class="table table-striped table-light table-hover my-4">
-<thead>
-<tr>
-<th>Descrição</th>
-<th>Lançamento</th>		
-<th>Aluno</th>
-<th>Data de Vencimento</th>	
-<th>Plano de Pagamento</th>	
-<th>Valor</th>
-<th>Comprovante</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-HTML;
+?>
+<table id="<?php echo $pagina ?>" class="table table-striped table-light table-hover my-4">
+	<thead>
+		<tr>
+			<th>Descrição</th>
+			<th>Aluno</th>
+			<th>Patrocinador</th>
+			<th>Lançamento</th>
+			<th>Data de Vencimento</th>
+			<th>Plano de Pagamento</th>
+			<th>Valor à Receber</th>
+			<th>Comprovante</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php
 
-$total_valor = 0;
-$total_valorF = 0;
-$res = $query->fetchAll(PDO::FETCH_ASSOC);
-for ($i = 0; $i < @count($res); $i++) {
-	foreach ($res[$i] as $key => $value) {
-	}
-
-	$id = $res[$i]['id'];
-	$cp1 = $res[$i]['descricao'];
-	$cp2 = $res[$i]['id_aluno'];
-	$cp4 = $res[$i]['id_patrocinador'];
-	$cp6 = $res[$i]['data_emissao'];
-	$cp7 = $res[$i]['vencimento'];
-	$cp8 = $res[$i]['frequencia'];
-	$cp9 = $res[$i]['valor'];
-	$cp10 = $res[$i]['usuario_lanc'];
-	$cp11 = $res[$i]['usuario_baixa'];
-	$arquivo = $res[$i]['arquivo'];
-
-	$cp13 = $res[$i]['status'];
-	$cp18 = $res[$i]['data_baixa'];
-
-	//EXTRAIR EXTENSÃO DO ARQUIVO
-	$ext = pathinfo($arquivo, PATHINFO_EXTENSION);
-	if ($ext == 'pdf') {
-		$tumb_arquivo = 'pdf.png';
-	} else if ($ext == 'rar' || $ext == 'zip') {
-		$tumb_arquivo = 'rar.png';
-	} else {
-		$tumb_arquivo = $arquivo;
-	}
-
-	if ($cp13 == 'Paga') {
-		$classe = 'text-success';
-		$ocutar = 'd-none';
-		$icone = 'bi bi-check-circle-fill';
-	} else {
-		$classe = 'text-danger';
-		$total_valor += $cp9;
-		$total_valorF = number_format($total_valor, 2, ',', '.');
-		$ocutar = '';
-		$icone = 'bi bi-x-circle-fill';
-	}
-
-
-	//RECUPERAR DIAS VENCIDOS
-	$data_venc_carencia = date('Y/m/d', strtotime("-$dias_carencia days", strtotime($data_hoje)));
-
-	if (strtotime($cp7) < strtotime($data_venc_carencia)) {
-		$dif = strtotime($data_venc_carencia) - strtotime($cp7);
-		$dias_vencidos = floor($dif / (60 * 60 * 24));
-	} else {
-		$dias_vencidos = '0';
-	}
-
-
-	$query1 = $pdo->query("SELECT * from usuarios where id = '$cp10' ");
-	$res1 = $query1->fetchAll(PDO::FETCH_ASSOC);
-	if (@count($res1) > 0) {
-		$nome_usu_lanc = $res1[0]['nome'];
-	} else {
-		$nome_usu_lanc = 'Sem Usuário';
-	}
-
-	$query1 = $pdo->query("SELECT * from usuarios where id = '$cp11' ");
-	$res1 = $query1->fetchAll(PDO::FETCH_ASSOC);
-	if (@count($res1) > 0) {
-		$nome_usu_baixa = $res1[0]['nome'];
-	} else {
-		$nome_usu_baixa = 'Sem Usuário';
-	}
-
-	$descricao = $cp1;
-
-	$query1 = $pdo->query("SELECT * from pessoas where id = '$cp2' ");
-	$res1 = $query1->fetchAll(PDO::FETCH_ASSOC);
-	if (@count($res1) > 0) {
-		$nome_cliente = $res1[0]['nome'];
-		$telefone_cliente = $res1[0]['contato'];
-		$classe_whats = '';
-	} else {
-		$nome_cliente = 'Sem Aluno';
-		$classe_whats = 'd-none';
-		$telefone_cliente = "";
-	}
-
-	if ($descricao == '') {
-		$descricao = $nome_cliente;
-	}
-
-
-	$data_emissao = implode('/', array_reverse(explode('-', $cp6)));
-	$data_venc = implode('/', array_reverse(explode('-', $cp7)));
-	$cp18 = implode('/', array_reverse(explode('-', $cp18)));
-
-	$valor = number_format($cp9, 2, ',', '.');
-
-
-	//PEGAR RESIDUOS DA CONTA
-	$total_resid = 0;
-	$valor_com_residuos = 0;
-	$query2 = $pdo->query("SELECT * FROM valor_parcial WHERE id_conta = '$id'");
-	$res2 = $query2->fetchAll(PDO::FETCH_ASSOC);
-	if (@count($res2) > 0) {
-
-		$descricao = '(Resíduo) - ' . $descricao;
-
-		for ($i2 = 0; $i2 < @count($res2); $i2++) {
-			foreach ($res2[$i2] as $key => $value) {
+		$total_valor = 0;
+		$total_valorF = 0;
+		$res = $query->fetchAll(PDO::FETCH_ASSOC);
+		for ($i = 0; $i < @count($res); $i++) {
+			foreach ($res[$i] as $key => $value) {
 			}
-			$id_res = $res2[$i2]['id'];
-			$valor_resid = $res2[$i2]['valor'];
-			$total_resid += $valor_resid;
+
+			$id = $res[$i]['id'];
+			$cp1 = $res[$i]['descricao'];
+			$cp2 = $res[$i]['id_aluno'];
+			$cp4 = $res[$i]['id_patrocinador'];
+			$cp6 = $res[$i]['data_emissao'];
+			$cp7 = $res[$i]['vencimento'];
+			$cp8 = $res[$i]['frequencia'];
+			$cp9 = $res[$i]['valor'];
+			$cp10 = $res[$i]['usuario_lanc'];
+			$cp11 = $res[$i]['usuario_baixa'];
+			$arquivo = $res[$i]['arquivo'];
+
+			$cp13 = $res[$i]['status'];
+			$cp18 = $res[$i]['data_baixa'];
+
+			//EXTRAIR EXTENSÃO DO ARQUIVO
+			$ext = pathinfo($arquivo, PATHINFO_EXTENSION);
+			if ($ext == 'pdf') {
+				$tumb_arquivo = 'pdf.png';
+			} else if ($ext == 'rar' || $ext == 'zip') {
+				$tumb_arquivo = 'rar.png';
+			} else {
+				$tumb_arquivo = $arquivo;
+			}
+
+			if ($cp13 == 'Paga') {
+				$classe = 'text-success';
+				$ocutar = 'd-none';
+				$icone = 'bi bi-check-circle-fill';
+			} else {
+				$classe = 'text-danger';
+				$total_valor += $cp9;
+				$total_valorF = number_format($total_valor, 2, ',', '.');
+				$ocutar = '';
+				$icone = 'bi bi-x-circle-fill';
+			}
+
+
+			//RECUPERAR DIAS VENCIDOS
+			$data_venc_carencia = date('Y/m/d', strtotime("-$dias_carencia days", strtotime($data_hoje)));
+
+			if (strtotime($cp7) < strtotime($data_venc_carencia)) {
+				$dif = strtotime($data_venc_carencia) - strtotime($cp7);
+				$dias_vencidos = floor($dif / (60 * 60 * 24));
+			} else {
+				$dias_vencidos = '0';
+			}
+
+
+			$query1 = $pdo->query("SELECT * from usuarios where id = '$cp10' ");
+			$res1 = $query1->fetchAll(PDO::FETCH_ASSOC);
+			if (@count($res1) > 0) {
+				$nome_usu_lanc = $res1[0]['nome'];
+			} else {
+				$nome_usu_lanc = 'Sem Usuário';
+			}
+
+			$query1 = $pdo->query("SELECT * from usuarios where id = '$cp11' ");
+			$res1 = $query1->fetchAll(PDO::FETCH_ASSOC);
+			if (@count($res1) > 0) {
+				$nome_usu_baixa = $res1[0]['nome'];
+			} else {
+				$nome_usu_baixa = 'Sem Usuário';
+			}
+
+			$descricao = $cp1;
+
+			$query1 = $pdo->query("SELECT * from pessoas where id = '$cp2' ");
+			$res1 = $query1->fetchAll(PDO::FETCH_ASSOC);
+			if (@count($res1) > 0) {
+				$nome_aluno = $res1[0]['nome'];
+				$telefone_aluno = $res1[0]['contato'];
+				$classe_whats = '';
+			} else {
+				$nome_aluno = 'Sem Aluno';
+				$classe_whats = 'd-none';
+				$telefone_aluno = "";
+			}
+
+			$query1 = $pdo->query("SELECT * from pessoas where id = '$cp4' ");
+			$res1 = $query1->fetchAll(PDO::FETCH_ASSOC);
+			if (@count($res1) > 0) {
+				$nome_patrocinador = $res1[0]['nome'];
+				$telefone_patrocinador = $res1[0]['contato'];
+				$classe_whats = '';
+			} else {
+				$nome_patrocinador = 'Sem Patrocinador';
+				$classe_whats = 'd-none';
+				$telefone_patrocinador = "";
+			}
+
+			$data_emissao = implode('/', array_reverse(explode('-', $cp6)));
+			$data_venc = implode('/', array_reverse(explode('-', $cp7)));
+			$cp18 = implode('/', array_reverse(explode('-', $cp18)));
+
+			$valor = number_format($cp9, 2, ',', '.');
+
+
+			//PEGAR RESIDUOS DA CONTA
+			$total_resid = 0;
+			$valor_com_residuos = 0;
+			$query2 = $pdo->query("SELECT * FROM valor_parcial WHERE id_conta = '$id'");
+			$res2 = $query2->fetchAll(PDO::FETCH_ASSOC);
+			if (@count($res2) > 0) {
+
+				$descricao = '(Resíduo) - ' . $descricao;
+
+				for ($i2 = 0; $i2 < @count($res2); $i2++) {
+					foreach ($res2[$i2] as $key => $value) {
+					}
+					$id_res = $res2[$i2]['id'];
+					$valor_resid = $res2[$i2]['valor'];
+					$total_resid += $valor_resid;
+				}
+
+
+				$valor_com_residuos = $cp9 + $total_resid;
+			}
+			if ($valor_com_residuos > 0) {
+				$vlr_antigo_conta = '(' . $valor_com_residuos . ')';
+				$descricao_link = '';
+				$descricao_texto = 'd-none';
+			} else {
+				$vlr_antigo_conta = '';
+				$descricao_link = 'd-none';
+				$descricao_texto = '';
+			}
+
+
+		?>
+			<tr>
+				<td>
+					<i class="<?php echo $icone ?> <?php echo $classe ?>"></i>
+					<span class="<?php echo $descricao_link ?>">
+						<a href="#" onclick="mostrarResiduos('<?php echo $id ?>')" class="text-dark" title="Ver Resíduos"><?php echo $descricao ?></a>
+					</span>
+					<span class="<?php echo $descricao_texto ?>">
+						<?php echo $descricao ?>
+					</span>
+				</td>
+				<td><?php echo $nome_aluno ?></td>
+				<td><?php echo $nome_patrocinador ?></td>
+				<td><?php echo $data_emissao ?></td>
+				<td><?php echo $data_venc ?></td>
+				<td><?php echo $cp8 ?></td>
+				<td>R$ <?php echo $valor ?> <small><a href="#" onclick="mostrarResiduos('<?php echo $id ?>')" class="text-success" title="Ver Resíduos"><?php echo $vlr_antigo_conta ?></a></small></td>
+
+				<td>
+					<a href="../img/contas/<?php echo $arquivo ?>" target="_blank">
+						<img src="../img/contas/<?php echo $tumb_arquivo ?>" width="30px">
+					</a>
+				</td>
+
+				<td>
+					<div class="btn-group">
+						<button type="button" class="btn btn-primary" href="#" onclick="editar('<?php echo $id ?>', '<?php echo $cp1 ?>', '<?php echo $cp2 ?>', '<?php echo $cp4 ?>', '<?php echo $cp6 ?>', '<?php echo $cp7 ?>', '<?php echo $cp8 ?>', '<?php echo $cp9 ?>', '<?php echo $nome_aluno ?>', '<?php echo $tumb_arquivo ?>')" title="Editar Registro">
+							<i class="bi bi-pencil-fill <?php echo $ocutar ?>"></i>
+						</button>
+						<button type="button" class="btn btn-danger" href="#" onclick="excluir('<?php echo $id ?>' , '<?php echo $cp1 ?>')" title="Excluir Registro">
+							<i class="bi bi-trash-fill <?php echo $ocutar ?>"></i>
+						</button>
+
+						<button type="button" class="btn btn-secondary" href="#" onclick="mostrarDados('<?php echo $id ?>', '<?php echo $cp1 ?>', '<?php echo $nome_aluno ?>', '<?php echo $cp4 ?>', '<?php echo $data_emissao ?>', '<?php echo $data_venc ?>', '<?php echo $cp8 ?>', '<?php echo $valor ?>', '<?php echo $nome_usu_lanc ?>', '<?php echo $nome_usu_baixa ?>', '<?php echo $cp13 ?>', '<?php echo $cp18 ?>')" title="Ver Dados da Conta">
+							<i class="bi bi-credit-card-2-front-fill"></i>
+						</button>
+
+
+						<button type="button" class="btn btn-dark" href="#" onclick="parcelar('<?php echo $id ?>' , '<?php echo $cp1 ?>', '<?php echo $cp9 ?>')" title="Parcelar Conta">
+							<i class="bi bi-calendar-plus-fill <?php echo $ocutar ?>"></i>
+						</button>
+
+						<button type="button" class="btn btn-success" href="#" onclick="baixar('<?php echo $id ?>' , '<?php echo $cp1 ?>', '<?php echo $cp9 ?>', '<?php echo $dias_vencidos ?>')" title="Pagar">
+							<i class="bi bi-check-square-fill"></i>
+						</button>
+					</div>
+
+					<div class="btn-group">
+						<button type="button" class="btn btn-outline-success text-white <?php echo $classe_whats ?>" target="_blank" href="http://api.whatsapp.com/send?1=pt_BR&phone=55<?php echo $telefone_aluno ?>&text=Olá, <?php echo $nome_aluno ?>. Verificamos em nosso sistema que a parcela com vencimento no dia *<?php echo $data_venc ?>* no valor de *R$ <?php echo $valor ?>* ainda não foi paga." title="WhatsApp do Aluno: <?php echo $telefone_aluno ?>">
+							<i class="bi bi-whatsapp text-success"></i>
+							<i class="bi bi-person-fill text-success"></i>
+						</button>
+
+						<button type="button" class="btn btn-outline-success text-white <?php echo $classe_whats ?>" target="_blank" href="http://api.whatsapp.com/send?1=pt_BR&phone=55<?php echo $telefone_patrocinador ?>&text=Olá, <?php echo $nome_patrocinador ?>. Verificamos em nosso sistema que a a parcela do atleta <?php echo $nome_aluno ?> com vencimento no dia *<?php echo $data_venc ?>* no valor de *R$ <?php echo $valor ?>* ainda não foi paga." title="WhatsApp do Patrocinador: <?php echo $telefone_patrocinador ?>">
+							<i class="bi bi-whatsapp text-success"></i>
+							<i class="bi bi-building text-success"></i>
+						</button>
+					</div>
+				</td>
+			</tr>
+		<?php
 		}
-
-
-		$valor_com_residuos = $cp9 + $total_resid;
-	}
-	if ($valor_com_residuos > 0) {
-		$vlr_antigo_conta = '(' . $valor_com_residuos . ')';
-		$descricao_link = '';
-		$descricao_texto = 'd-none';
-	} else {
-		$vlr_antigo_conta = '';
-		$descricao_link = 'd-none';
-		$descricao_texto = '';
-	}
-
-
-	echo <<<HTML
-	<tr>
-	<td>
-	<i class="<?php echo $icone ?> <?php echo $classe ?>"></i>
-	<span class="{$descricao_link}">
-	<a href="#" onclick="mostrarResiduos('{$id}')" class="text-dark" title="Ver Resíduos">{$descricao}</a>
-	</span>
-	<span class="{$descricao_texto}">
-	{$descricao}
-	</span>
-	</td>		
-	<td>{$nome_cliente}</td>	
-		
-	<td>{$data_venc}</td>	
-	<td>{$cp8}</td>	
-	<td>R$ {$valor} <small><a href="#" onclick="mostrarResiduos('{$id}')" class="text-success" title="Ver Resíduos">{$vlr_antigo_conta}</a></small></td>
-
-	<td >
-	<a href="../img/contas/{$arquivo}" target="_blank">
-	<img src="../img/contas/{$tumb_arquivo}" width="30px">
-	</a>
-	</td>	
-								
-	<td>
-	<a href="#" onclick="editar('{$id}', '{$cp1}', '{$cp2}', '{$cp4}', '{$cp6}', '{$cp7}', '{$cp8}', '{$cp9}', '{$nome_cliente}', '{$tumb_arquivo}')" title="Editar Registro">	<i class="bi bi-pencil-square text-primary {$ocutar}"></i> </a>
-	<a href="#" onclick="excluir('{$id}' , '{$cp1}')" title="Excluir Registro">	<i class="bi bi-trash text-danger {$ocutar}"></i> </a>
-
-	<a class="mx-1" href="#" onclick="mostrarDados('{$id}', '{$cp1}', '{$nome_cliente}', '{$cp4}', '{$data_emissao}', '{$data_venc}', '{$cp8}', '{$valor}', '{$nome_usu_lanc}', '{$nome_usu_baixa}', '{$cp13}', '$cp18')" title="Ver Dados da Conta">
-	<i class="bi bi-exclamation-square"></i></a>
-
-
-	<a href="#" onclick="parcelar('{$id}' , '{$cp1}', '{$cp9}')" title="Parcelar Conta">	<i class="bi bi-calendar-week text-secondary {$ocutar}"></i> </a>
-
-	<a href="#" onclick="baixar('{$id}' , '{$cp1}', '{$cp9}', '$dias_vencidos')" title="Dar Baixa">	<i class="bi bi-check-square text-success mx-1 {$ocutar}"></i> </a>
-
-
-	<a class="{$classe_whats}" target="_blank" href="http://api.whatsapp.com/send?1=pt_BR&phone=55$telefone_cliente&text=Ola, $nome_cliente Lembrete de vencimento no dia: $data_venc no valor de: R$ $valor." title="Cobrar pelo WhatsApp: $telefone_cliente">
-	<i class="bi bi-whatsapp text-success"></i></a>
-	
-	</td>
-	</tr>
-HTML;
-}
-echo <<<HTML
-</tbody>
+		?>
+	</tbody>
 </table>
-HTML;
+<?php
 
 ?>
 
@@ -252,8 +279,8 @@ HTML;
 		$('#<?= $campo8 ?>').val(cp8);
 		$('#<?= $campo9 ?>').val(cp9);
 
-		$('#nome-cliente').val(nome);
-		$('#id-cliente').val(cp2).change();
+		$('#nome-aluno').val(nome);
+		$('#id-aluno').val(cp2).change();
 
 		$('#target').attr('src', '../img/contas/' + arquivo);
 
@@ -277,8 +304,8 @@ HTML;
 
 		$('#<?= $campo1 ?>').val('');
 		$('#<?= $campo9 ?>').val('');
-		$('#id-cliente').val('');
-		$('#nome-cliente').val('');
+		$('#id-aluno').val('');
+		$('#nome-aluno').val('');
 		$('#mensagem').text('');
 
 		$('#usuario_adm').val('');
@@ -287,9 +314,9 @@ HTML;
 
 		$('#target').attr('src', '../img/contas/sem-foto.jpg');
 		$('#arquivo').val('');
-		$('#id-cliente').val('').change();
+		$('#id-aluno').val('').change();
 
-		listarClientes();
+		listaralunos();
 
 		//DEFINIR ABA A SER ABERTA
 		var someTabTriggerEl = document.querySelector('#home-tab')

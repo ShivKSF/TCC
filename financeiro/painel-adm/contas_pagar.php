@@ -90,7 +90,7 @@ if ($frequencia_automatica != 'Não') {
 	<div class="col-md-9">
 
 		<div style="float:left; margin-right:35px">
-			<a href="#" onclick="inserir()" type="button" class="btn btn-dark btn-sm">Cadastrar Conta à Pagar</a>
+			<button href="#" onclick="inserir()" type="button" class="btn btn-warning btn-sm btn-block">Cadastrar Conta à Pagar</button>
 		</div>
 		<div style="float:left; margin-right:10px">
 			<p class="mx-4">Data Inicial:</p>
@@ -315,63 +315,6 @@ if ($frequencia_automatica != 'Não') {
 	</div>
 </div>
 
-
-
-
-
-<!-- Modal -->
-<div class="modal fade" id="modalDados" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Conta <span id="campo1"></span></h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			</div>
-
-			<div class="modal-body">
-				<small>
-
-
-					<span><b>Data Emissão:</b> <span id="campo6"></span></span>
-					<span class="mx-4"><b>Vencimento:</b> <span id="campo7"></span>
-					</span>
-					<hr style="margin:6px;">
-
-					<span><b>Frequência:</b> <span id="campo8"></span></span>
-					<span class="mx-4"><b><?php echo $campo9 ?>:</b> R$ <span id="campo9"></span>
-					</span>
-					<hr style="margin:6px;">
-
-					<span><b>Usuário Lançamento:</b> <span id="campo10"></span></span>
-					<hr style="margin:6px;">
-
-					<span><b>Usuário Baixa:</b> <span id="campo11"></span></span>
-					<hr style="margin:6px;">
-
-					<span><b>Status Conta:</b> <span id="campo13"></span></span>
-					<span class="mx-4"><b>Data Baixa:</b> <span id="campo18"></span>
-					</span>
-					<hr style="margin:6px;">
-
-
-
-
-
-				</small>
-
-
-			</div>
-
-		</div>
-	</div>
-</div>
-
-
-
-
-
-
-
 <!-- Modal -->
 <div class="modal fade" id="modalParcelar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
@@ -466,7 +409,7 @@ if ($frequencia_automatica != 'Não') {
 					<div class="row">
 						<div class="col-md-6">
 							<div class="mb-3">
-								<label for="exampleFormControlInput1" class="form-label">Valor <small class="text-muted">(Total ou Parcial)</small></label>
+								<label for="exampleFormControlInput1" class="form-label">Valor <small class="text-muted">(Confirme o Valor da Conta)</small></label>
 								<input onkeyup="totalizar()" type="text" class="form-control" name="valor-baixar" id="valor-baixar" required>
 							</div>
 						</div>

@@ -12,7 +12,7 @@ if ($frequencia_automatica != 'Não') {
 	$mes = date('m');
 	$ano = date('Y');
 
-	$query = $pdo->query("SELECT * from $pagina order by id desc ");
+	$query = $pdo->query("SELECT * from $pagina ORDER BY id desc ");
 	$res = $query->fetchAll(PDO::FETCH_ASSOC);
 	for ($i = 0; $i < @count($res); $i++) {
 		foreach ($res[$i] as $key => $value) {
@@ -88,7 +88,7 @@ if ($frequencia_automatica != 'Não') {
 	<div class="col-md-9">
 
 		<div style="float:left; margin-right:35px">
-			<a href="#" onclick="inserir()" type="button" class="btn btn-dark btn-sm">Cadastrar Conta à Receber</a>
+			<a href="#" onclick="inserir()" type="button" class="btn btn-warning btn-sm btn-block">Cadastrar Conta à Receber</a>
 		</div>
 		<div style="float:left; margin-right:10px">
 			<p class="mx-4">Data Inicial:</p>
@@ -156,7 +156,7 @@ if ($frequencia_automatica != 'Não') {
 								<select class="form-select sel2" aria-label="Default select example" name="<?php echo $campo2 ?>" id="id-cliente" style="width:100%;">
 									<option value="0">Sem Aluno</option>
 									<?php
-									$query = $pdo->query("SELECT * FROM pessoas WHERE aluno = 1 order by nome asc");
+									$query = $pdo->query("SELECT * FROM pessoas WHERE aluno = 1 ORDER BY nome ASC");
 									$res = $query->fetchAll(PDO::FETCH_ASSOC);
 									for ($i = 0; $i < @count($res); $i++) {
 										foreach ($res[$i] as $key => $value) {
@@ -195,7 +195,7 @@ if ($frequencia_automatica != 'Não') {
 								<select class="form-select sel2" aria-label="Default select example" name="<?php echo $campo4 ?>" id="id-cliente" style="width:100%;">
 									<option value="0">Sem Patrocinador</option>
 									<?php
-									$query = $pdo->query("SELECT * FROM pessoas WHERE patrocinador = 1 order by nome asc");
+									$query = $pdo->query("SELECT * FROM pessoas WHERE patrocinador = 1 ORDER BY nome ASC");
 									$res = $query->fetchAll(PDO::FETCH_ASSOC);
 									for ($i = 0; $i < @count($res); $i++) {
 										foreach ($res[$i] as $key => $value) {
@@ -233,7 +233,7 @@ if ($frequencia_automatica != 'Não') {
 								<select class="form-select" aria-label="Default select example" name="<?php echo $campo8 ?>" id="<?php echo $campo8 ?>">
 
 									<?php
-									$query = $pdo->query("SELECT * FROM frequencias order by id asc");
+									$query = $pdo->query("SELECT * FROM frequencias ORDER BY id ASC");
 									$res = $query->fetchAll(PDO::FETCH_ASSOC);
 									for ($i = 0; $i < @count($res); $i++) {
 										foreach ($res[$i] as $key => $value) {
@@ -424,7 +424,7 @@ if ($frequencia_automatica != 'Não') {
 								<select class="form-select" aria-label="Default select example" name="frequencia-parcelar" id="frequencia-parcelar">
 
 									<?php
-									$query = $pdo->query("SELECT * FROM frequencias order by id asc");
+									$query = $pdo->query("SELECT * FROM frequencias ORDER BY id ASC");
 									$res = $query->fetchAll(PDO::FETCH_ASSOC);
 									for ($i = 0; $i < @count($res); $i++) {
 										foreach ($res[$i] as $key => $value) {
@@ -486,7 +486,7 @@ if ($frequencia_automatica != 'Não') {
 					<div class="row">
 						<div class="col-md-6">
 							<div class="mb-3">
-								<label for="exampleFormControlInput1" class="form-label">Valor <small class="text-muted">(Total ou Parcial)</small></label>
+								<label for="exampleFormControlInput1" class="form-label">Valor <small class="text-muted">(Confirme o Valor da Conta)</small></label>
 								<input onkeyup="totalizar()" type="text" class="form-control" name="valor-baixar" id="valor-baixar" required>
 							</div>
 						</div>

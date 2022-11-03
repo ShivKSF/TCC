@@ -39,6 +39,11 @@ if($valor > $cp9){
 	exit();
 }
 
+if($valor < $cp9){
+	echo 'O valor a ser pago não pode ser menor ao valor da conta! O valor da conta é de R$ '.$cp9;
+	exit();
+}
+
 if($valor <= 0){
 	echo 'O precisa ser maior que 0 ';
 	exit();

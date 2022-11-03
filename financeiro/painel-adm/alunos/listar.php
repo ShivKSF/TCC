@@ -29,7 +29,7 @@ require_once("campos.php");
 		</div>
 		<tbody style="font-size:20px">
 			<?php
-			$query = $pdo->query("SELECT * FROM $tabela WHERE aluno = 1 ORDER BY id DESC ");
+			$query = $pdo->query("SELECT * FROM $tabela WHERE aluno = 1 ORDER BY ativo DESC");
 			$res = $query->fetchAll(PDO::FETCH_ASSOC);
 			for ($i = 0; $i < @count($res); $i++) {
 				foreach ($res[$i] as $key => $value) {

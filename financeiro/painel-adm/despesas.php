@@ -8,7 +8,7 @@ require_once($pagina."/campos.php");
 ?>
 
 <div class="col-md-12 my-3">
-	<a href="#" onclick="inserir()" type="button" class="btn btn-dark btn-sm">Nova Despesa</a>
+	<a href="#" onclick="inserir()" type="button" class="btn btn-warning btn-sm btn-block">Nova Despesa</a>
 </div>
 
 <small>
@@ -41,7 +41,7 @@ require_once($pagina."/campos.php");
 						<label for="exampleFormControlInput1" class="form-label"><?php echo $campo2 ?> </label>
 						<select class="form-select" aria-label="Default select example" name="<?php echo $campo2 ?>" id="<?php echo $campo2 ?>">
 							<?php 
-							$query = $pdo->query("SELECT * FROM cat_despesas order by nome asc");
+							$query = $pdo->query("SELECT * FROM cat_despesas where excluido = 0 order by nome asc");
 							$res = $query->fetchAll(PDO::FETCH_ASSOC);
 							for($i=0; $i < @count($res); $i++){
 								foreach ($res[$i] as $key => $value){	}

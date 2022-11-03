@@ -66,12 +66,14 @@ if (@$_GET['pag'] == "") {
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="index.php?pag=<?php echo $menu1 ?>">Dashboard</a>
+						<a class="nav-link active" aria-current="page" href="index.php?pag=<?php echo $menu1 ?>">
+						<strong>Dashboard</strong>
+						</a>
 					</li>
 
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							Cadastros
+						<strong>Cadastros</strong>
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<li><a class="dropdown-item" href="index.php?pag=<?php echo $menu2 ?>">Atletas</a></li>
@@ -81,7 +83,7 @@ if (@$_GET['pag'] == "") {
 
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							Financeiro
+						<strong>Financeiro</strong>
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<li><a class="dropdown-item" href="index.php?pag=<?php echo $menu6 ?>">Entradas</a></li>
@@ -91,7 +93,7 @@ if (@$_GET['pag'] == "") {
 
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							Configuração
+						<strong>Configuração</strong>
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<li><a class="dropdown-item" href="index.php?pag=<?php echo $menu5 ?>">Planos de Pagamento</a></li>
@@ -102,7 +104,7 @@ if (@$_GET['pag'] == "") {
 
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							Segurança
+						<strong>Segurança</strong>
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<li><a class="dropdown-item" href="index.php?pag=<?php echo $menu4 ?>">Usuários</a></li>

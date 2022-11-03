@@ -8,7 +8,7 @@ require_once($pagina."/campos.php");
 ?>
 
 <div class="col-md-12 my-3">
-	<a href="#" onclick="inserir()" type="button" class="btn btn-dark btn-sm">Nova Categoria</a>
+	<a href="#" onclick="inserir()" type="button" class="btn btn-warning btn-sm btn-block">Nova Categoria</a>
 </div>
 
 <small>

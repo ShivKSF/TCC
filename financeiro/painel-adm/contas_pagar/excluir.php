@@ -8,6 +8,7 @@ $perfil_admin = $_SESSION['perfil_usuario'];
 $id = @$_POST['id-excluir'];
 $usuario_admin = @$_POST['usuario_admin'];
 $senha_admin = @$_POST['senha_admin'];
+$cp10 = $_SESSION['id_usuario'];
 
 $query = $pdo->prepare("SELECT * FROM usuarios WHERE email = :email AND senha = :senha AND perfil = 'Administrador' ");
 $query->bindValue(":email", "$usuario_admin");
@@ -26,7 +27,7 @@ if($imagem != 'sem-foto.jpg'){
 	@unlink('../../img/contas/'.$imagem);
 }
 
-$pdo->query("UPDATE $pagina SET excluido = 1, usuario_deleta = '$id_usuario' WHERE id = '$id'");
+$pdo->query("UPDATE $pagina SET excluido = 1, usuario_deleta = '$cp10' WHERE id = '$id'");
 echo 'Excluído com Sucesso';
 }else{
 	echo 'Usuário não é um Administrador!';

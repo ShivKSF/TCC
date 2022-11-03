@@ -6,13 +6,14 @@ $email_admin = 'kaique.sousa@unigranrio.br';
 $nome_admin = 'Kaique Sousa Farias';
 $senha_admin = 1;
 $perfil_admin = 'Administrador';
-
+$contato_desenvolvedor = '21984184135';
+$nome_desenvolvedor = $nome_admin;
 
 //DADOS PARA O BANCO DADOS LOCAL
 $servidor = 'localhost';
 $usuario = 'root';
-//$senha = '';
-$senha = '240190';
+$senha = '';
+//$senha = '240190';
 $banco = 'financeiro';
 
 

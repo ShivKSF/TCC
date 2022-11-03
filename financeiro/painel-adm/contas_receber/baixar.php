@@ -22,8 +22,6 @@ $valor_multa = str_replace(',', '.', $valor_multa);
 $subtotal = $_POST['subtotal'];
 $subtotal = str_replace(',', '.', $subtotal);
 
-$saida = $_POST['saida-baixar'];
-
 $query = $pdo->query("SELECT * from $pagina where id = '$id' ");
 $res = $query->fetchAll(PDO::FETCH_ASSOC);
 $id = $res[0]['id'];
@@ -34,15 +32,6 @@ $cp7 = $res[0]['vencimento'];
 $cp8 = $res[0]['frequencia'];
 $cp9 = $res[0]['valor'];
 $data_rec = $res[0]['data_recor'];
-
-$query2 = $pdo->query("SELECT * FROM pessoas WHERE aluno = 1 AND id = '$cp2'");
-$res2 = $query2->fetchAll(PDO::FETCH_ASSOC);
-if(@count($res2) > 0){
-$nome_fornecedor = $res2[0]['nome'];
-$descricao_conta = $cp1 . ' - '. $nome_fornecedor;
-}else{
-$descricao_conta = $cp1;	
-}
 
 if($valor > $cp9){
 	echo 'O valor a ser pago não pode ser superior ao valor da conta! O valor da conta é de R$ '.$cp9;

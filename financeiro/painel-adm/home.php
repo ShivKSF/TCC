@@ -18,22 +18,22 @@ $query = $pdo->query("SELECT * FROM pessoas WHERE patrocinador = 1 AND ativo = '
 $res = $query->fetchAll(PDO::FETCH_ASSOC);
 $patrocinadorCadastrados = @count($res);
 
-$query = $pdo->query("SELECT * FROM contas_receber WHERE vencimento < curDate() and status != 'Paga'");
+$query = $pdo->query("SELECT * FROM contas_receber WHERE vencimento < curDate() and status != 'Paga' and excluido = 0");
 $res = $query->fetchAll(PDO::FETCH_ASSOC);
 $contas_receber_vencidas = @count($res);
 
 
-$query = $pdo->query("SELECT * FROM contas_receber WHERE vencimento = curDate() and status != 'Paga'");
+$query = $pdo->query("SELECT * FROM contas_receber WHERE vencimento = curDate() and status != 'Paga' and excluido = 0");
 $res = $query->fetchAll(PDO::FETCH_ASSOC);
 $contas_receber_hoje = @count($res);
 
 
-$query = $pdo->query("SELECT * FROM contas_pagar WHERE vencimento < curDate() and status != 'Paga'");
+$query = $pdo->query("SELECT * FROM contas_pagar WHERE vencimento < curDate() and status != 'Paga' and excluido = 0");
 $res = $query->fetchAll(PDO::FETCH_ASSOC);
 $contas_pagar_vencidas = @count($res);
 
 
-$query = $pdo->query("SELECT * FROM contas_pagar WHERE vencimento = curDate() and status != 'Paga'");
+$query = $pdo->query("SELECT * FROM contas_pagar WHERE vencimento = curDate() and status != 'Paga' and excluido = 0");
 $res = $query->fetchAll(PDO::FETCH_ASSOC);
 $contas_pagar_hoje = @count($res);
 
@@ -61,7 +61,7 @@ for ($i = 0; $i < @count($res); $i++) {
 
 
 $totalPagarM = 0;
-$query = $pdo->query("SELECT * FROM contas_pagar WHERE vencimento >= '$dataInicioMes' and vencimento <= curDate() and status = 'Pendente'");
+$query = $pdo->query("SELECT * FROM contas_pagar WHERE vencimento >= '$dataInicioMes' and vencimento <= curDate() and status = 'Pendente' and excluido = 0");
 $res = $query->fetchAll(PDO::FETCH_ASSOC);
 $pagarMes = @count($res);
 $total_reg = @count($res);
@@ -70,15 +70,14 @@ if ($total_reg > 0) {
 	for ($i = 0; $i < $total_reg; $i++) {
 		foreach ($res[$i] as $key => $value) {
 		}
-
 		$totalPagarM += $res[$i]['valor'];
 		$pagarMesF = number_format($totalPagarM, 2, ',', '.');
 	}
 }
 
 
-$totalReceberM = 0;
-$query = $pdo->query("SELECT * FROM contas_receber WHERE vencimento >= '$dataInicioMes' and vencimento <= curDate() and status = 'Pendente'");
+$totalReceberM = 0.0;
+$query = $pdo->query("SELECT * FROM contas_receber WHERE vencimento >= '$dataInicioMes' and vencimento <= curDate() and status = 'Pendente' and excluido = 0");
 $res = $query->fetchAll(PDO::FETCH_ASSOC);
 $receberMes = @count($res);
 $total_reg = @count($res);
@@ -87,7 +86,6 @@ if ($total_reg > 0) {
 	for ($i = 0; $i < $total_reg; $i++) {
 		foreach ($res[$i] as $key => $value) {
 		}
-
 		$totalReceberM += $res[$i]['valor'];
 		$receberMesF = number_format($totalReceberM, 2, ',', '.');
 	}

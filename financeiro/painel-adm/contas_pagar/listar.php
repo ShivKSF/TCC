@@ -175,18 +175,23 @@ if ($alterou_data == 'Sim') {
 				</td>
 
 				<td>
-					<a href="#" onclick="editar('<?php echo $id ?>', '<?php echo $cp1 ?>', '<?php echo $cp5 ?>', '<?php echo $cp6 ?>', '<?php echo $cp7 ?>', '<?php echo $cp8 ?>', '<?php echo $cp9 ?>', '<?php $tumb_arquivo ?>')" title="Editar Registro"> <i class="bi bi-pencil-square text-primary <?php $ocutar ?>"></i> </a>
+					<div class="btn-group">
+						<button type="button" class="btn btn-primary" href="#" onclick="editar('<?php echo $id ?>', '<?php echo $cp1 ?>', '<?php echo $cp5 ?>', '<?php echo $cp6 ?>', '<?php echo $cp7 ?>', '<?php echo $cp8 ?>', '<?php echo $cp9 ?>', '<?php $tumb_arquivo ?>')" title="Editar Registro">
+							<i class="bi bi-pencil-fill <?php echo $ocutar ?>"></i>
+						</button>
 
-					<a href="#" onclick="excluir('<?php echo $id ?>' , '<?php echo $cp1 ?>')" title="Excluir Registro"> <i class="bi bi-trash text-danger <?php echo $ocutar ?>"></i> </a>
+						<button type="button" class="btn btn-danger" href="#" onclick="excluir('<?php echo $id ?>' , '<?php echo $cp1 ?>')" title="Excluir Registro">
+							<i class="bi bi-trash-fill <?php echo $ocutar ?>"></i>
+						</button>
 
-					<!-- <a class="mx-1" href="#" onclick="mostrarDados('<?php $id ?>', '<?php $cp1 ?>', '<?php $cp5 ?>', '<?php $data_emissao ?>', '<?php $data_venc ?>', '<?php $cp8 ?>', '<?php $valor ?>', '<?php $nome_usu_lanc ?>', '<?php $nome_usu_baixa ?>', '<?php $cp13 ?>', '<?php $cp18 ?>')" title="Ver Dados da Conta">
-	<i class="bi bi-exclamation-square"></i></a> -->
+						<button type="button" class="btn btn-dark" href="#" onclick="parcelar('<?php echo $id ?>' , '<?php echo $cp1 ?>', '<?php echo $cp9 ?>')" title="Parcelar Conta">
+							<i class="bi bi-calendar-plus-fill <?php echo $ocutar ?>"></i>
+						</button>
 
-
-					<a href="#" onclick="parcelar('<?php echo $id ?>' , '<?php echo $cp1 ?>', '<?php echo $cp9 ?>')" title="Parcelar Conta"> <i class="bi bi-calendar-week text-secondary <?php echo $ocutar ?>"></i> </a>
-
-					<a href="#" onclick="baixar('<?php echo $id ?>' , '<?php echo $cp1 ?>', '<?php echo $cp9 ?>')" title="Dar Baixa"> <i class="bi bi-check-square text-success mx-1 <?php echo $ocutar ?>"></i> </a>
-
+						<button type="button" class="btn btn-success" href="#" onclick="baixar('<?php echo $id ?>' , '<?php echo $cp1 ?>', '<?php echo $cp9 ?>')" title="Dar Baixa">
+							<i class="bi bi-check-square-fill"></i>
+						</button>
+					</div>
 				</td>
 			</tr>
 		<?php

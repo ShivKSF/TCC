@@ -142,10 +142,10 @@ if ($alterou_data == 'Sim') {
 			if (@count($res1) > 0) {
 				$nome_patrocinador = $res1[0]['nome'];
 				$telefone_patrocinador = $res1[0]['contato'];
-				$classe_whats = '';
+				$classe_whatsPatrocinador = '';
 			} else {
 				$nome_patrocinador = 'Sem Patrocinador';
-				$classe_whats = 'd-none';
+				$classe_whatsPatrocinador = 'd-none';
 				$telefone_patrocinador = "";
 			}
 
@@ -235,15 +235,15 @@ if ($alterou_data == 'Sim') {
 					</div>
 
 					<div class="btn-group">
-						<button type="button" class="btn btn-outline-success text-white <?php echo $classe_whats ?>" target="_blank" href="http://api.whatsapp.com/send?1=pt_BR&phone=55<?php echo $telefone_aluno ?>&text=Olá, <?php echo $nome_aluno ?>. Verificamos em nosso sistema que a parcela com vencimento no dia *<?php echo $data_venc ?>* no valor de *R$ <?php echo $valor ?>* ainda não foi paga." title="WhatsApp do Aluno: <?php echo $telefone_aluno ?>">
+						<a class="btn btn-outline-success text-white <?php echo $classe_whats ?>" target="_blank" href="http://api.whatsapp.com/send?1=pt_BR&phone=55<?php echo $telefone_aluno ?>&text=Olá, <?php echo $nome_aluno ?>. Verificamos em nosso sistema que a parcela com vencimento no dia *<?php echo $data_venc ?>* no valor de *R$ <?php echo $valor ?>* ainda não foi paga." title="WhatsApp do Aluno: <?php echo $telefone_aluno ?>">
 							<i class="bi bi-whatsapp text-success"></i>
 							<i class="bi bi-person-fill text-success"></i>
-						</button>
+						</a>
 
-						<button type="button" class="btn btn-outline-success text-white <?php echo $classe_whats ?>" target="_blank" href="http://api.whatsapp.com/send?1=pt_BR&phone=55<?php echo $telefone_patrocinador ?>&text=Olá, <?php echo $nome_patrocinador ?>. Verificamos em nosso sistema que a a parcela do atleta <?php echo $nome_aluno ?> com vencimento no dia *<?php echo $data_venc ?>* no valor de *R$ <?php echo $valor ?>* ainda não foi paga." title="WhatsApp do Patrocinador: <?php echo $telefone_patrocinador ?>">
+						<a class="btn btn-outline-success text-white <?php echo $classe_whatsPatrocinador ?>" target="_blank" href="http://api.whatsapp.com/send?1=pt_BR&phone=55<?php echo $telefone_patrocinador ?>&text=Olá, <?php echo $nome_patrocinador ?>. Verificamos em nosso sistema que a a parcela do atleta <?php echo $nome_aluno ?> com vencimento no dia *<?php echo $data_venc ?>* no valor de *R$ <?php echo $valor ?>* ainda não foi paga." title="WhatsApp do Patrocinador: <?php echo $telefone_patrocinador ?>">
 							<i class="bi bi-whatsapp text-success"></i>
 							<i class="bi bi-building text-success"></i>
-						</button>
+						</a>
 					</div>
 				</td>
 			</tr>

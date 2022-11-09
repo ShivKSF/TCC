@@ -1,9 +1,7 @@
-<p align="center">
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
-</p>
-# TCC
 
-Esse repositório foi criado com o intuito de armazenar o código de projeto de TCC.
+# TCC
+> Esse repositório foi criado com o intuito de armazenar o código de projeto de TCC.
 
 # Ferramentas utilizadas
 
@@ -14,7 +12,7 @@ Esse repositório foi criado com o intuito de armazenar o código de projeto de 
 * jQuery
 * Bootstrap
 * DataTables
-* Sass
+* ~Sass~ ()
 
 ## Passo a passo para utilizar o projeto
 
@@ -55,17 +53,24 @@ Senha: `1`
 - [X] Cadastro de Níveis de Usuários
 - [X] Cadastro de Usuários
 - [X] Remove os Registros `Excluídos` da visualização, mas mantém no banco de dados
-- [ ] Cadastro de Pessoas
-- [ ] Alterar aparência
-- [ ] Criar Dashboard
-- [ ] Criar Contas: `à Pagar` e `à Receber`
+- [X] Cadastro de Pessoas
+- [X] Alterar aparência
+- [X] Criar Dashboard
+- [X] Criar Contas: `à Pagar` e `à Receber`
+- [X] Organizar arquivos
+- [X] Opção para configurar permissões dos usuários
+- [X] Criar Despesas
+- [X] Criar frequência automática de contas
+- [ ] Criar Casos de uso
+- [ ] Criar Diagrama de classe
 - [ ] Não recarregar página de Login ao digitar dados incorretos
-- [ ] Organizar arquivos
-- [ ] Opção para configurar permissões dos usuários
 - [ ] Lembrete de data de aniversário, data de pagamentos, histórico de atleta, cursos, campeonatos, evolução, peso inicial, categoria
 
 
 ## Histórico de lançamentos
+
+* 0.0.2
+    * Pós Apresentação do TCC
 
 * 0.0.1
     * Trabalho em andamento

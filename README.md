@@ -69,6 +69,17 @@ Senha: `1`
   - Diagrama de classe
    ```mermaid
    classDiagram
+    usuarios -- contas_pagar
+    usuarios -- contas_receber
+    despesas -- cat_despesas
+    contas_pagar -- despesas
+    valor_parcial -- contas_pagar
+    valor_parcial -- contas_receber
+    pessoas -- contas_pagar
+    pessoas -- contas_receber
+    frequencias -- contas_pagar
+    frequencias -- contas_receber
+
        class cat_despesas{
         -id
         -nome

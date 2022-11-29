@@ -22,7 +22,7 @@
 - [**SUBLIME**](https://www.sublimetext.com/download_thanks?target=win-x64)
 
 # **Instale o XAMPP**
-- [**XAMPP**](https://downloadsapachefriends.global.ssl.fastly.net/8.1.6/xampp-windows-x64-8.1.6-0-VS16-installer.exe?from_af=true)
+- [**XAMPP**](https://www.apachefriends.org/pt_br/download.html)
 
 # **Passo a passo**
 - Copie a pasta financeiro e cole nesse caminho `C:\xampp\htdocs` .
@@ -62,9 +62,121 @@ Senha: `1`
 - [X] Criar Despesas
 - [X] Criar frequência automática de contas
 - [ ] Criar Casos de uso
-- [ ] Criar Diagrama de classe
+- [X] Criar Diagrama de classe
 - [ ] Não recarregar página de Login ao digitar dados incorretos
 - [ ] Lembrete de data de aniversário, data de pagamentos, histórico de atleta, cursos, campeonatos, evolução, peso inicial, categoria
+
+## Banco de Dados
+
+  - Diagrama de classe
+   ```mermaid
+   classDiagram
+       class cat_despesas{
+        -id
+        -nome
+        -excluido
+        -usuario_deleta
+       }
+       class contas_pagar{
+        -id
+        -descricao
+        -plano_conta
+        -data_emissao
+        -vencimento
+        -frequencia
+        -valor
+        -usuario_lanc
+        -usuario_baixa
+        -status
+        -data_recor
+        -juros
+        -multa
+        -desconto
+        -subtotal
+        -data_baixa
+        -arquivo
+        -excluido
+        -usuario_deleta
+       }
+        class contas_receber{
+        -id
+        -descricao
+        -id_aluno
+        -id_patrocinador
+        -data_emissao
+        -vencimento
+        -frequencia
+        -valor
+        -usuario_lanc
+        -usuario_baixa
+        -status
+        -data_recor
+        -juros
+        -multa
+        -desconto
+        -subtotal
+        -data_baixa
+        -arquivo
+        -excluido
+        -usuario_deleta
+       }
+        class despesas{
+        -id
+        -nome
+        -cat_despesa
+        -excluido
+        -usuario_deleta
+       }
+        class frequencias{
+        -id
+        -nome
+        -excluido
+        -usuario_deleta
+        -dias
+       }
+        class pessoas{
+        -id
+        -nome
+        -nomeFantasia
+        -cpf
+        -cnpj
+        -logradouro
+        -bairro
+        -cidade
+        -uf
+        -complemento
+        -numero
+        -cep
+        -registroGeral
+        -celularPessoal
+        -celularComercial
+        -emailPessoal
+        -emailComercial
+        -contato
+        -observacao
+        -dataNascimento
+        -aluno
+        -patrocinador
+        -ativo
+        -dataCadastro
+       }
+        class usuarios{
+        -id
+        -nome
+        -email
+        -senha
+        -perfil
+        -ativo
+       }
+        class valor_parcial{
+        -id
+        -id_conta
+        -tipo
+        -valor
+        -data
+        -usuario
+       }
+   ```
 
 
 ## Histórico de lançamentos

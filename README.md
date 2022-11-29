@@ -66,8 +66,6 @@ Senha: `1`
 - [ ] Não recarregar página de Login ao digitar dados incorretos
 - [ ] Lembrete de data de aniversário, data de pagamentos, histórico de atleta, cursos, campeonatos, evolução, peso inicial, categoria
 
-## Banco de Dados
-
   - Diagrama de classe
    ```mermaid
    classDiagram
